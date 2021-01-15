@@ -1,0 +1,4 @@
+[submodule "RIOT"]
+	path = RIOT
+	url = https://github.com/Citrullin/RIOT.git
+	branch = wot_gcoap_thing_model
