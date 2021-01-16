@@ -1,0 +1,29 @@
+{
+    "thing": {
+        "security": "basic",
+        "@context": [
+            {
+                "riot_os": "http://www.example.org/riot-os-definitions#"
+            }
+        ]
+    },
+    "status": {
+        "forms": [
+            {
+                "riot_os:handler_function": "_led_status_handler",
+                "op": "readproperty",
+                "href": "/led/status",
+                "cov:methodName": "GET"
+            }
+        ]
+    },
+    "toggle": {
+        "forms": [
+            {
+                "riot_os:handler_function": "_led_toggle_handler",
+                "href": "/led/toggle",
+                "cov:methodName": "POST"
+            }
+        ]
+    }
+}
