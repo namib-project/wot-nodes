@@ -60,73 +60,14 @@ static gcoap_listener_t _wot_coap_listener = {
     NULL,
 };
 
-wot_td_digest_sec_scheme_t wot_td_security_schema_digest_test_sec_scheme_definitions = {
-    .qop = SECURITY_SCHEME_IN_DEFAULT,
-    .name = "querykey",
-    .in = SECURITY_SCHEME_IN_QUERY,
+wot_td_sec_scheme_t wot_td_security_schema_nosec_sc_sec_scheme = {
+    .scheme_type = SECURITY_SCHEME_NONE,
 };
 
-wot_td_multi_lang_t wot_td_security_schema_digest_test_sec_scheme_description_1 = {
-    .tag = "de",
-    .value = "Digest-Sicherheitsschema",
+wot_td_security_t wot_td_security_schema_nosec_sc = {
+    .key = "nosec_sc",
+    .value = &wot_td_security_schema_nosec_sc_sec_scheme,
     .next = NULL,
-};
-
-wot_td_multi_lang_t wot_td_security_schema_digest_test_sec_scheme_description_0 = {
-    .tag = "en",
-    .value = "Digest sec schema",
-    .next = &wot_td_security_schema_digest_test_sec_scheme_description_1,
-};
-
-wot_td_uri_t wot_td_security_schema_digest_test_sec_scheme_proxy = {
-    .value = "https://example.org",
-};
-
-wot_td_sec_scheme_t wot_td_security_schema_digest_test_sec_scheme = {
-    .scheme_type = SECURITY_SCHEME_DIGEST,
-    .proxy = &wot_td_security_schema_digest_test_sec_scheme_proxy,
-    .descriptions = &wot_td_security_schema_digest_test_sec_scheme_description_0,
-    .scheme = &wot_td_security_schema_digest_test_sec_scheme_definitions,
-};
-
-wot_td_security_t wot_td_security_schema_digest_test = {
-    .key = "digest_test",
-    .value = &wot_td_security_schema_digest_test_sec_scheme,
-    .next = NULL,
-};
-
-wot_td_basic_sec_scheme_t wot_td_security_schema_basic_sec_scheme_definitions = {
-    .name = "querykey",
-    .in = SECURITY_SCHEME_IN_QUERY,
-};
-
-wot_td_multi_lang_t wot_td_security_schema_basic_sec_scheme_description_1 = {
-    .tag = "de",
-    .value = "Einfaches Sicherheitsschema",
-    .next = NULL,
-};
-
-wot_td_multi_lang_t wot_td_security_schema_basic_sec_scheme_description_0 = {
-    .tag = "en",
-    .value = "Basic sec schema",
-    .next = &wot_td_security_schema_basic_sec_scheme_description_1,
-};
-
-wot_td_uri_t wot_td_security_schema_basic_sec_scheme_proxy = {
-    .value = "https://example.org",
-};
-
-wot_td_sec_scheme_t wot_td_security_schema_basic_sec_scheme = {
-    .scheme_type = SECURITY_SCHEME_BASIC,
-    .proxy = &wot_td_security_schema_basic_sec_scheme_proxy,
-    .descriptions = &wot_td_security_schema_basic_sec_scheme_description_0,
-    .scheme = &wot_td_security_schema_basic_sec_scheme_definitions,
-};
-
-wot_td_security_t wot_td_security_schema_basic = {
-    .key = "basic",
-    .value = &wot_td_security_schema_basic_sec_scheme,
-    .next = &wot_td_security_schema_digest_test,
 };
 
 wot_td_extension_t wot_td_toggle_action_aff_int_form_0_extension = {0};
@@ -208,7 +149,7 @@ char wot_td_thing_default_language_tag[] = "en";
 int wot_td_config_init(wot_td_thing_t *wot_td_thing){
     wot_td_thing->type = &wot_td_thing_type_0;
     wot_td_thing->context = &wot_td_thing_context_0;
-    wot_td_thing->security = &wot_td_security_schema_basic;
+    wot_td_thing->security = &wot_td_security_schema_nosec_sc;
     wot_td_thing->default_language_tag = wot_td_thing_default_language_tag;
 
     return 0;
