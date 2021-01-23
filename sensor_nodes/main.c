@@ -78,9 +78,6 @@ void *_fetch_humidity_values(void *args){
 #define MAIN_QUEUE_SIZE (4)
 static msg_t _main_msg_queue[MAIN_QUEUE_SIZE];
 
-extern int gcoap_cli_cmd(int argc, char **argv);
-extern void gcoap_cli_init(void);
-
 #ifdef DHT_SENSOR
     #include "dht_sensor.h"
 #endif
@@ -90,7 +87,6 @@ extern void gcoap_cli_init(void);
 #endif
 
 static const shell_command_t shell_commands[] = {
-    {"coap", "CoAP example", gcoap_cli_cmd},
     #ifdef DHT_SENSOR
         {"dht", "Reads temperature and humidity (default GPIO: 27).", dht_cmd},
     #endif
@@ -116,7 +112,6 @@ int main(void)
 
     /* for the thread running the shell */
     msg_init_queue(_main_msg_queue, MAIN_QUEUE_SIZE);
-    gcoap_cli_init();
     puts("NAMIB sensor prototype app");
 
     #ifdef DHT_SENSOR
