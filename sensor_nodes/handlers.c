@@ -498,7 +498,7 @@ ssize_t _rain_step_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
     }
 }
 
-ssize_t _rain_Value_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
+ssize_t _rain_value_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
 {
     (void)ctx;
     char *val = get_rain_value() ? "true" : "false";
