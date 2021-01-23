@@ -60,15 +60,17 @@ void *_dhcpv6_client_thread(void *args)
     /* start DHCPv6 client */
     dhcpv6_client_start();
     /* start event loop of DHCPv6 client */
-    event_loop(&event_queue);   /* never returns */
+    event_loop(&event_queue); /* never returns */
     return NULL;
 }
 
 #ifdef DHT_SENSOR
-void *_fetch_humidity_values(void *args){
-    while(1){
+void *_fetch_humidity_values(void *args)
+{
+    while (1)
+    {
         int num = sensor_set_extreme();
-        printf("Measured humidity of %d.%01d%%\n", num/10, num%10);
+        printf("Measured humidity of %d.%01d%%\n", num / 10, num % 10);
         xtimer_sleep(20);
     }
     return NULL;
@@ -79,34 +81,33 @@ void *_fetch_humidity_values(void *args){
 static msg_t _main_msg_queue[MAIN_QUEUE_SIZE];
 
 #ifdef DHT_SENSOR
-    #include "dht_sensor.h"
+#include "dht_sensor.h"
 #endif
 #ifdef RAIN_SENSOR
-    extern int rain_cmd(int argc, char **argv);
-    extern void rain_init(void);
+extern int rain_cmd(int argc, char **argv);
+extern void rain_init(void);
 #endif
 
 static const shell_command_t shell_commands[] = {
-    #ifdef DHT_SENSOR
-        {"dht", "Reads temperature and humidity (default GPIO: 27).", dht_cmd},
-    #endif
-    { NULL, NULL, NULL }
-};
+#ifdef DHT_SENSOR
+    {"dht", "Reads temperature and humidity (default GPIO: 27).", dht_cmd},
+#endif
+    {NULL, NULL, NULL}};
 
 int main(void)
 {
     /* DHCPv6 Client */
 
-    char *pl[] = { "nib", "prefix" };
+    char *pl[] = {"nib", "prefix"};
 
     _gnrc_netif_config(0, NULL);
     thread_create(_dhcpv6_client_stack, DHCPV6_CLIENT_STACK_SIZE,
                   DHCPV6_CLIENT_PRIORITY, THREAD_CREATE_STACKTEST,
                   _dhcpv6_client_thread, NULL, "dhcpv6-client");
     xtimer_sleep(5);
-    
+
     /* global address should now be configured */
-    
+
     _gnrc_netif_config(0, NULL);
     _gnrc_ipv6_nib(2, pl);
 
@@ -114,16 +115,16 @@ int main(void)
     msg_init_queue(_main_msg_queue, MAIN_QUEUE_SIZE);
     puts("NAMIB sensor prototype app");
 
-    #ifdef DHT_SENSOR
-        dht_sensor_init();
-        thread_create(_dht_humidity_stack, sizeof(_dht_humidity_stack),
-                      THREAD_PRIORITY_MIN-1, THREAD_CREATE_STACKTEST,
-                      _fetch_humidity_values, NULL, "dht_fetch_humidity");
-    #endif
+#ifdef DHT_SENSOR
+    dht_sensor_init();
+    thread_create(_dht_humidity_stack, sizeof(_dht_humidity_stack),
+                  THREAD_PRIORITY_MIN - 1, THREAD_CREATE_STACKTEST,
+                  _fetch_humidity_values, NULL, "dht_fetch_humidity");
+#endif
 
-    #ifdef RAIN_SENSOR
-        rain_init();
-    #endif
+#ifdef RAIN_SENSOR
+    rain_init();
+#endif
 
     /* start shell */
     puts("All up, running the shell now");
