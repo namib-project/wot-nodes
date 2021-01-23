@@ -1,53 +1,47 @@
 {
-	"properties": {
-		"value": {
-			"name": "value",
-			"description": "true = sensed, false = not sensed.",
-			"writable": false,
-			"type": "boolean",
-			"required": true
-		},
-		"measurement": {
-			"name": "measurement",
-			"type": "number",
-			"description": "Measured value for this sensor in units of litres/hr",
-			"writable": false,
-			"required": false
-		},
-		"precision": {
-			"name": "precision",
-			"type": "number",
-			"writable": false,
-			"description": "When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision",
-			"required": false
-		},
-		"range": {
-			"name": "range",
-			"type": "array",
-			"description": "The valid range for the Property in the Resource as a number. The first value in the array is the minimum value, the second value in the array is the maximum value.",
-			"writable": false,
-			"minItems": 2,
-			"maxItems": 2,
-			"items": {
-				"type": "number"
-			},
-			"required": false
-		},
-		"step": {
-			"name": "step",
-			"description": "Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.",
-			"writable": false,
-			"type": "number",
-			"required": false
-		}
-	},
-	"actions": {},
-	"events": {},
-	"created": "2021-01-23T16:42:12.146Z",
-	"modified": "2021-01-23T16:42:12.146Z",
-	"@context": [
-		"https://www.w3.org/2019/wot/td/v1"
-	],
-	"@type": "Thing",
-	"title": "Water Sensor"
+    "properties": {
+        "water_value": {
+            "title": "value",
+            "description": "true = sensed, false = not sensed.",
+            "writable": false,
+            "type": "boolean"
+        },
+        "water_measurement": {
+            "title": "measurement",
+            "type": "number",
+            "description": "Measured value for this sensor in units of litres/hr",
+            "writable": false
+        },
+        "water_precision": {
+            "title": "precision",
+            "type": "number",
+            "writable": false,
+            "description": "When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision"
+        },
+        "water_range": {
+            "title": "range",
+            "type": "array",
+            "description": "The valid range for the Property in the Resource as a number. The first value in the array is the minimum value, the second value in the array is the maximum value.",
+            "writable": false,
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+                "type": "number"
+            }
+        },
+        "water_step": {
+            "title": "step",
+            "description": "Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.",
+            "writable": false,
+            "type": "number"
+        },
+        "required": ["water_value"]
+    },
+    "actions": {},
+    "events": {},
+    "created": "2021-01-23T16:42:12.146Z",
+    "modified": "2021-01-23T16:42:12.146Z",
+    "@context": ["https://www.w3.org/2019/wot/td/v1"],
+    "@type": "ThingModel",
+    "title": "Water Sensor"
 }
