@@ -89,10 +89,10 @@
                 }
             ]
         },
-        "_dht_temp_step_handler": {
+        "temperature_step": {
             "forms": [
                 {
-                    "riot_os:handler_function": "_led_status_handler",
+                    "riot_os:handler_function": "_dht_temp_step_handler",
                     "op": "readproperty",
                     "href": "/temperature/step",
                     "cov:methodName": "GET"
@@ -108,6 +108,87 @@
                     "cov:methodName": "GET"
                 }
             ]
+        },
+        "humidity_value": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_dht_hum_handler",
+                    "op": "readproperty",
+                    "href": "/humidity/value",
+                    "cov:methodName": "GET"
+                }
+            ]
+        },
+        "humidity_Min_Measured_Value": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_dht_hum_min_value_handler",
+                    "op": "readproperty",
+                    "href": "/humidity/min_measured",
+                    "cov:methodName": "GET"
+                }
+            ]
+        },
+        "humidity_Max_Measured_Value": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_dht_hum_max_value_handler",
+                    "op": "readproperty",
+                    "href": "/humidity/max_measured",
+                    "cov:methodName": "GET"
+                }
+            ]
+        },
+        "humidity_Min_Range_Value": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_dht_hum_min_range_handler",
+                    "op": "readproperty",
+                    "href": "/humidity/min_range",
+                    "cov:methodName": "GET"
+                }
+            ]
+        },
+        "humidity_Max_Range_Value": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_dht_hum_max_range_handler",
+                    "op": "readproperty",
+                    "href": "/humidity/max_range",
+                    "cov:methodName": "GET"
+                }
+            ]
+        },
+        "humidity_Units": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_dht_hum_unit_handler",
+                    "op": "readproperty",
+                    "href": "/humidity/unit",
+                    "cov:methodName": "GET"
+                }
+            ]
+        },
+        "humidity_Precision": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_dht_hum_precision_handler",
+                    "op": "readproperty",
+                    "href": "/humidity/precision",
+                    "cov:methodName": "GET"
+                }
+            ]
+        },
+        "humidity_Step": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_dht_hum_step_handler",
+                    "op": "readproperty",
+                    "href": "/humidity/step",
+                    "cov:methodName": "GET"
+                }
+            ]
+        }
     },
     "actions": {
         "humidity_Reset_Min_and_Max_Measured_Values": {
