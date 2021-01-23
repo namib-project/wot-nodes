@@ -51,19 +51,19 @@ CFLAGS += -DDHT_SENSOR
 CFLAGS += -DRAIN_SENSOR
 
 WOT_INSTANCE_INFO += wot-config/instance.json
-ifdef DHT_SENSOR
+ifneq (,$(findstring -DDHT_SENSOR,$(CFLAGS)))
 WOT_THING_MODELS += wot-config/thing-model-ipso-humidity.json
 WOT_THING_MODELS += wot-config/thing-model-sensor-temperature.json
 endif
-ifdef RAIN_SENSOR
+ifneq (,$(findstring -DRAIN_SENSOR,$(CFLAGS)))
 WOT_THING_MODELS += wot-config/thing-model-sensor-water.json
 endif
 
 CFLAGS += -DDHCPV6_SERVER_PORT=$(DHCPV6_SERVER_PORT)
-ifdef DHT_SENSOR
+ifneq (,$(findstring -DDHT_SENSOR,$(CFLAGS)))
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
 endif
-ifdef RAIN_SENSOR
+ifneq (,$(findstring -DRAIN_SENSOR,$(CFLAGS)))
 CFLAGS += -DRAIN_GPIO=$(RAIN_GPIO)
 endif
 
