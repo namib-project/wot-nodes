@@ -1,0 +1,36 @@
+{
+    "@context": [
+        "https://www.w3.org/2019/wot/td/v1", { "@language": "en" }
+    ],
+    "titles": {
+        "de": "LED-Steuerung",
+        "en": "LED-Controller"
+    },
+    "descriptions": {
+        "de": "Steuerungseinheit für eine LED",
+        "en": "Control unit for an LED"
+    },
+    "properties": {
+        "status": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_led_status_handler",
+                    "op": "readproperty",
+                    "href": "/led/status",
+                    "cov:methodName": "GET"
+                }
+            ]
+        }
+    },
+    "actions": {
+        "toggle": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_led_toggle_handler",
+                    "href": "/led/toggle",
+                    "cov:methodName": "POST"
+                }
+            ]
+        }
+    }
+}

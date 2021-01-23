@@ -1,0 +1,75 @@
+{
+	"properties": {
+		"Sensor_Value": {
+			"name": "Sensor_Value",
+			"description": "Last or Current Measured Value from the Sensor.",
+			"writable": false,
+			"type": "number",
+			"required": true
+		},
+		"Min_Measured_Value": {
+			"name": "Min_Measured_Value",
+			"description": "The minimum value measured by the sensor since power ON or reset.",
+			"writable": false,
+			"type": "number",
+			"required": false
+		},
+		"Max_Measured_Value": {
+			"name": "Max_Measured_Value",
+			"description": "The maximum value measured by the sensor since power ON or reset.",
+			"writable": false,
+			"type": "number",
+			"required": false
+		},
+		"Min_Range_Value": {
+			"name": "Min_Range_Value",
+			"description": "The minimum value that can be measured by the sensor.",
+			"writable": false,
+			"type": "number",
+			"required": false
+		},
+		"Max_Range_Value": {
+			"name": "Max_Range_Value",
+			"description": "The maximum value that can be measured by the sensor.",
+			"writable": false,
+			"type": "number",
+			"required": false
+		},
+		"Sensor_Units": {
+			"name": "Sensor_Units",
+			"description": "Measurement Units Definition.",
+			"writable": false,
+			"type": "string",
+			"required": false
+		},
+		"Sensor_Precision": {
+			"name": "Sensor_Precision",
+			"type": "number",
+			"writable": false,
+			"description": "Proviedes a +/- tolerance against Properties in the Resource.",
+			"required": false
+		},
+		"Sensor_Step": {
+			"name": "Sensor_Step",
+			"type": "number",
+			"writable": false,
+			"description": "Step value across the defined range. The step Property defines the increment for valid values across the range.",
+			"required": false
+		}
+	},
+	"actions": {
+		"Reset_Min_and_Max_Measured_Values": {
+			"name": "Reset_Min_and_Max_Measured_Values",
+			"input": {},
+			"required": false
+		}
+	},
+	"events": {},
+	"created": "2021-01-23T16:10:45.949Z",
+	"modified": "2021-01-23T16:10:45.949Z",
+	"@context": [
+		"https://www.w3.org/2019/wot/td/v1"
+	],
+	"@type": "Thing",
+	"title": "OMA LwM2M Humidity (Object ID 3304)"
+}
