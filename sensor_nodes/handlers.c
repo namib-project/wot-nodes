@@ -543,7 +543,7 @@ ssize_t _rain_range_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx
 {
     (void)ctx;
     char val[] = "";
-    int *ans = get_rain_range();
+    unsigned int *ans = get_rain_range();
     sprintf(val, "[%d,%d]", ans[0], ans[1]);
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
     coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
