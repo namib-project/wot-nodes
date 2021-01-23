@@ -1,6 +1,14 @@
 {
-    "@context": ["http://www.w3.org/ns/td"],
-    "@type": "ThingModel",
+    "@context": [
+        "http://www.w3.org/ns/td",
+        {
+            "saref": "https://w3id.org/saref#"
+        }
+    ],
+    "@type": [
+        "ThingModel",
+        "saref:LightSwitch"
+    ],
     "title": "Lamp Thing Model",
     "description": "Lamp Thing Description Model",
     "properties": {
