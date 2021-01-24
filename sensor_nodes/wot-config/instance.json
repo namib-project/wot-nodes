@@ -1,12 +1,14 @@
 {
-    "@context": ["https://www.w3.org/2019/wot/td/v1", { "@language": "en" }],
+    "@context": ["https://www.w3.org/2019/wot/td/v1", { "@language": "de" }, 
+        { "namib": "https://namib.uni-bremen.de/wot#" }],
+    "@type": ["namib:SensorNode"],
     "titles": {
-        "de": "LED-Steuerung",
-        "en": "LED-Controller"
+        "de": "NAMIB-Sensor-Node",
+        "en": "NAMIB Sensor Node"
     },
     "descriptions": {
-        "de": "Steuerungseinheit für eine LED",
-        "en": "Control unit for an LED"
+        "de": "A sensor node designed to be used in the undergraduate project NAMIB",
+        "en": "A Sensor Node für den Einsatz im Bachelorprojkt NAMIB"
     },
     "properties": {
         "water_value": {
