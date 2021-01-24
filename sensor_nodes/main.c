@@ -32,6 +32,7 @@
 #include "net/dhcpv6/client.h"
 #include "net/sock.h"
 #include "xtimer.h"
+#include "net/wot/coap.h"
 
 #include "net/gnrc/pktdump.h"
 #include "net/gnrc.h"
@@ -125,6 +126,8 @@ int main(void)
 #ifdef RAIN_SENSOR
     rain_init();
 #endif
+
+    wot_td_coap_server_init();
 
     /* start shell */
     puts("All up, running the shell now");
