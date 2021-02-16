@@ -59,29 +59,4 @@ CONFIG_MODULE_PERIPH_ADC=y
 # add sensor driver(s)
 USEMODULE += dht
 
-# Comment this out to disable code in RIOT that does safety checking
-# which is not needed in a production environment but helps in the
-# development process:
-DEVELHELP ?= 1
-
-# Change this to 0 show compiler invocation lines by default:
-QUIET ?= 1
-
 include $(RIOTBASE)/Makefile.include
-
-# For now this goes after the inclusion of Makefile.include so Kconfig symbols
-# are available. Only set configuration via CFLAGS if Kconfig is not being used
-# for this module.
-ifndef CONFIG_KCONFIG_MODULE_GCOAP
-## Uncomment to redefine port, for example use 61616 for RFC 6282 UDP compression.
-#GCOAP_PORT = 5683
-#CFLAGS += -DCONFIG_GCOAP_PORT=$(GCOAP_PORT)
-
-## Uncomment to redefine request token length, max 8.
-#GCOAP_TOKENLEN = 2
-#CFLAGS += -DCONFIG_GCOAP_TOKENLEN=$(GCOAP_TOKENLEN)
-
-# Increase from default for confirmable block2 follow-on requests
-GCOAP_RESEND_BUFS_MAX ?= 2
-CFLAGS += -DCONFIG_GCOAP_RESEND_BUFS_MAX=$(GCOAP_RESEND_BUFS_MAX)
-endif
