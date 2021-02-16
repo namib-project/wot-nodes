@@ -50,14 +50,9 @@ USEMODULE += wot_coap_config
 CFLAGS += -DDHT_SENSOR
 CFLAGS += -DRAIN_SENSOR
 
+# TODO: Rework modular system
+WOT_THING_MODEL += wot-config/thing-model.json
 WOT_INSTANCE_INFO += wot-config/instance.json
-ifneq (,$(findstring -DDHT_SENSOR,$(CFLAGS)))
-WOT_THING_MODELS += wot-config/thing-model-ipso-humidity.json
-WOT_THING_MODELS += wot-config/thing-model-sensor-temperature.json
-endif
-ifneq (,$(findstring -DRAIN_SENSOR,$(CFLAGS)))
-WOT_THING_MODELS += wot-config/thing-model-sensor-water.json
-endif
 
 CFLAGS += -DDHCPV6_SERVER_PORT=$(DHCPV6_SERVER_PORT)
 ifneq (,$(findstring -DDHT_SENSOR,$(CFLAGS)))
