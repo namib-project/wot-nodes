@@ -9,9 +9,6 @@ BOARD ?= esp32-wroom-32
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE ?= $(CURDIR)/../RIOT
 
-# generate random free port
-DHCPV6_SERVER_PORT := 67
-
 # GPIO Bindings
 DHT_GPIO = GPIO27
 RAIN_GPIO = GPIO32
@@ -54,7 +51,6 @@ CFLAGS += -DRAIN_SENSOR
 WOT_THING_MODEL += wot-config/thing-model.json
 WOT_INSTANCE_INFO += wot-config/instance.json
 
-CFLAGS += -DDHCPV6_SERVER_PORT=$(DHCPV6_SERVER_PORT)
 ifneq (,$(findstring -DDHT_SENSOR,$(CFLAGS)))
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
 endif
