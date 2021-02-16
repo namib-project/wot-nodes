@@ -48,7 +48,7 @@
             "writable": false,
             "description": "Step value across the defined range. The step Property defines the increment for valid values across the range."
         },
-        "required": ["temperature"]
+        "required": ["humidity_value"]
     },
     "actions": {
         "humidity_Reset_Min_and_Max_Measured_Values": {
