@@ -42,8 +42,7 @@ USEMODULE += wot_core
 USEMODULE += wot_coap
 USEMODULE += wot_coap_config
 
-# Triggers for Node Configuration. Comment out if node hardware doesn't
-# support feature.
+# Triggers for Node Configuration. Currently all are required.
 CFLAGS += -DDHT_SENSOR
 CFLAGS += -DRAIN_SENSOR
 
@@ -51,12 +50,8 @@ CFLAGS += -DRAIN_SENSOR
 WOT_THING_MODEL += wot-config/thing-model.json
 WOT_INSTANCE_INFO += wot-config/instance.json
 
-ifneq (,$(findstring -DDHT_SENSOR,$(CFLAGS)))
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
-endif
-ifneq (,$(findstring -DRAIN_SENSOR,$(CFLAGS)))
 CFLAGS += -DRAIN_GPIO=$(RAIN_GPIO)
-endif
 
 FEATURES_REQUIRED = periph_adc
 CONFIG_MODULE_PERIPH_ADC=y
