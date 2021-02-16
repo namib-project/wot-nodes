@@ -13,7 +13,7 @@ USEMODULE += wot_coap
 USEMODULE += wot_coap_config
 USEMODULE += xtimer
 
-WOT_THING_MODELS += wot-config/thing_model.json
+WOT_THING_MODEL += wot-config/thing_model.json
 WOT_INSTANCE_INFO += wot-config/instance.json
 
 ifeq ($(BOARD),esp32-wroom-32)
