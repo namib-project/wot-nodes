@@ -56,7 +56,7 @@ CFLAGS += -DRAIN_GPIO=$(RAIN_GPIO)
 FEATURES_REQUIRED = periph_adc
 CONFIG_MODULE_PERIPH_ADC=y
 
-# add sensor(s)
+# add sensor driver(s)
 USEMODULE += dht
 
 # Comment this out to disable code in RIOT that does safety checking
