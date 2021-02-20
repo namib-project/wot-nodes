@@ -31,7 +31,11 @@ USEMODULE += shell
 USEMODULE += shell_commands
 USEMODULE += ps
 USEMODULE += esp_wifi
-CFLAGS += -DESP_WIFI_SSID=\"Namib\" -DESP_WIFI_PASS=\"NamibTest\"
+WIFI_SSID?=\"Namib\"
+WIFI_PASS?=\"NamibTest\"
+CFLAGS += -DESP_WIFI_SSID=$(WIFI_SSID)
+CFLAGS += -DESP_WIFI_PASS=$(WIFI_PASS)
+
 USEMODULE += gnrc_dhcpv6_client
 USEMODULE += gnrc_dhcpv6_client_mud_url
 USEMODULE += gnrc_pktdump
