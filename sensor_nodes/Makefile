@@ -9,6 +9,10 @@ BOARD ?= esp32-wroom-32
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE ?= $(CURDIR)/../RIOT
 
+# Set this variable to any value, if the sensor is in use.
+DHT=
+RAIN=
+
 # GPIO Bindings
 DHT_GPIO = GPIO27
 RAIN_GPIO = GPIO32
@@ -51,9 +55,28 @@ CFLAGS += -DDHT_SENSOR
 CFLAGS += -DRAIN_SENSOR
 
 # TODO: Rework modular system
-WOT_THING_MODEL += wot-config/thing-model.json
-WOT_INSTANCE_INFO += wot-config/instance.json
-
+ifdef DHT
+ifdef RAIN
+BOTH=1;
+endif
+endif
+$(info values: Rain: ${RAIN}, Dht: ${DHT}, Both: ${BOTH})
+ifdef BOTH
+WOT_THING_MODEL += wot-config/thing-model.tm.json
+WOT_INSTANCE_INFO += wot-config/instance.td.json
+$(info values: set whole thing-model)
+else
+ifdef DHT
+WOT_THING_MODEL += wot-config/dht_thing-model.tm.json
+WOT_INSTANCE_INFO += wot-config/dht_instance.td.json
+$(info values: set dht thing-model)
+endif
+ifdef RAIN
+WOT_THING_MODEL += wot-config/rain_thing-model.tm.json
+WOT_INSTANCE_INFO += wot-config/rain_instance.td.json
+$(info values: set rain thing-model)
+endif
+endif
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
 CFLAGS += -DRAIN_GPIO=$(RAIN_GPIO)
 

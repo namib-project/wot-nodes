@@ -1,0 +1,65 @@
+{
+  "@context": ["https://www.w3.org/2019/wot/td/v1", { "@language": "de" },
+    { "namib": "https://namib.uni-bremen.de/wot#" }],
+  "@type": ["namib:SensorNode"],
+  "titles": {
+    "de": "NAMIB-Water-Sensor-Node",
+    "en": "NAMIB Water Sensor Node"
+  },
+  "descriptions": {
+    "de": "A sensor node designed to be used in the undergraduate project NAMIB",
+    "en": "A Sensor Node für den Einsatz im Bachelorprojkt NAMIB"
+  },
+  "properties": {
+    "water_value": {
+      "forms": [
+        {
+          "riot_os:handler_function": "_rain_value_handler",
+          "op": "readproperty",
+          "href": "/rain/value",
+          "cov:methodName": "GET"
+        }
+      ]
+    },
+    "water_measurement": {
+      "forms": [
+        {
+          "riot_os:handler_function": "_rain_measurement_handler",
+          "op": "readproperty",
+          "href": "/rain/mesurement",
+          "cov:methodName": "GET"
+        }
+      ]
+    },
+    "water_precision": {
+      "forms": [
+        {
+          "riot_os:handler_function": "_rain_precision_handler",
+          "op": "readproperty",
+          "href": "/rain/precision",
+          "cov:methodName": "GET"
+        }
+      ]
+    },
+    "water_range": {
+      "forms": [
+        {
+          "riot_os:handler_function": "_rain_range_handler",
+          "op": "readproperty",
+          "href": "/rain/range",
+          "cov:methodName": "GET"
+        }
+      ]
+    },
+    "water_step": {
+      "forms": [
+        {
+          "riot_os:handler_function": "_rain_step_handler",
+          "op": "readproperty",
+          "href": "/rain/step",
+          "cov:methodName": "GET"
+        }
+      ]
+    }
+  }
+}
