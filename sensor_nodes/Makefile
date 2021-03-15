@@ -51,8 +51,12 @@ USEMODULE += wot_coap
 USEMODULE += wot_coap_config
 
 # Triggers for Node Configuration. Currently all are required.
+ifdef DHT
 CFLAGS += -DDHT_SENSOR
+endif
+ifdef RAIN
 CFLAGS += -DRAIN_SENSOR
+endif
 
 # TODO: Rework modular system
 ifdef DHT
@@ -60,21 +64,17 @@ ifdef RAIN
 BOTH=1;
 endif
 endif
-$(info values: Rain: ${RAIN}, Dht: ${DHT}, Both: ${BOTH})
 ifdef BOTH
 WOT_THING_MODEL += wot-config/thing-model.tm.json
 WOT_INSTANCE_INFO += wot-config/instance.td.json
-$(info values: set whole thing-model)
 else
 ifdef DHT
 WOT_THING_MODEL += wot-config/dht_thing-model.tm.json
 WOT_INSTANCE_INFO += wot-config/dht_instance.td.json
-$(info values: set dht thing-model)
 endif
 ifdef RAIN
 WOT_THING_MODEL += wot-config/rain_thing-model.tm.json
 WOT_INSTANCE_INFO += wot-config/rain_instance.td.json
-$(info values: set rain thing-model)
 endif
 endif
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)

@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -r ./sensor_nodes/bin
 export PATH="$PATH:$HOME/esp/xtensa-esp32-elf/bin"
 export ESP32_SDK_DIR=$HOME/esp/esp-idf
+make clean
 make BOARD=esp32-wroom-32 ESP32_SDK_DIR=$HOME/esp/esp-idf DHT=1
