@@ -23,7 +23,7 @@ ssize_t _dht_hum_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
     sprintf(bufstr, "%d.%01d", h100 / 10, h100 % 10);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the humidity in the response buffer */
@@ -50,7 +50,7 @@ ssize_t _dht_hum_unit_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *c
     sprintf(bufstr, "%s", unit_h);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the humidity in the response buffer */
@@ -80,7 +80,7 @@ ssize_t _dht_hum_min_range_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, vo
     sprintf(bufstr, "%d.%01d", min / 10, min % 10);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the humidity in the response buffer */
@@ -110,7 +110,7 @@ ssize_t _dht_hum_max_range_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, vo
     sprintf(bufstr, "%d.%01d", max / 10, max % 10);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the humidity in the response buffer */
@@ -140,7 +140,7 @@ ssize_t _dht_hum_step_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *c
     sprintf(bufstr, "%d.%01d", step / 10, step % 10);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the humidity in the response buffer */
@@ -170,7 +170,7 @@ ssize_t _dht_hum_precision_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, vo
     sprintf(bufstr, "%d.%01d", precision / 10, precision % 10);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the humidity in the response buffer */
@@ -200,7 +200,7 @@ ssize_t _dht_hum_min_value_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, vo
     sprintf(bufstr, "%d.%01d", min / 10, min % 10);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the humidity in the response buffer */
@@ -230,7 +230,7 @@ ssize_t _dht_hum_max_value_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, vo
     sprintf(bufstr, "%d.%01d", max / 10, max % 10);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the humidity in the response buffer */
@@ -272,7 +272,7 @@ ssize_t _dht_temp_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
     sprintf(bufstr, "%d.%02d", t100 / 100, rest);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the temperature in the response buffer */
@@ -297,7 +297,7 @@ ssize_t _dht_temp_unit_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *
     sprintf(bufstr, "%u", sensor_get_temperature_unit());
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the temperature in the response buffer */
@@ -331,7 +331,7 @@ ssize_t _dht_temp_range_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void 
     }
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the temperature in the response buffer */
@@ -365,7 +365,7 @@ ssize_t _dht_temp_step_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *
     }
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the temperature in the response buffer */
@@ -399,7 +399,7 @@ ssize_t _dht_temp_precision_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, v
     }
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     /* write the temperature in the response buffer */
@@ -462,7 +462,7 @@ ssize_t _rain_precision_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void 
     char val[6];
     snprintf(val, 6, "%f", get_rain_precision());
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     if (pdu->payload_len >= strlen(val))
@@ -483,7 +483,7 @@ ssize_t _rain_step_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
     char val[6];
     snprintf(val, 6, "%f", get_rain_step());
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     if (pdu->payload_len >= strlen(val))
@@ -503,7 +503,7 @@ ssize_t _rain_value_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx
     (void)ctx;
     char *val = get_rain_value() ? "true" : "false";
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     if (pdu->payload_len >= strlen(val))
@@ -524,7 +524,7 @@ ssize_t _rain_measurement_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, voi
     char val[4];
     sprintf(val, "%4f", get_rain_measurement());
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     if (pdu->payload_len >= strlen(val))
@@ -546,7 +546,7 @@ ssize_t _rain_range_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx
     unsigned int *ans = get_rain_range();
     sprintf(val, "[%d,%d]", ans[0], ans[1]);
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
-    coap_opt_add_format(pdu, COAP_FORMAT_TEXT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
     size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
     if (pdu->payload_len >= strlen(val))
