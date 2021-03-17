@@ -12,6 +12,7 @@ RIOTBASE ?= $(CURDIR)/../RIOT
 # GPIO Bindings
 DHT_GPIO = GPIO27
 RAIN_GPIO = GPIO32
+UV_GPIO = GPIO33
 
 # Include packages that pull up and auto-init the link layer.
 # NOTE: 6LoWPAN will be included if IEEE802.15.4 devices are present
@@ -49,6 +50,7 @@ USEMODULE += wot_coap_config
 # Triggers for Node Configuration. Currently all are required.
 CFLAGS += -DDHT_SENSOR
 CFLAGS += -DRAIN_SENSOR
+CFLAGS += -DUV_SENSOR
 
 # TODO: Rework modular system
 WOT_THING_MODEL += wot-config/thing-model.json
@@ -56,6 +58,7 @@ WOT_INSTANCE_INFO += wot-config/instance.json
 
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
 CFLAGS += -DRAIN_GPIO=$(RAIN_GPIO)
+CFLAGS += -DUV_GPIO=$(UV_GPIO)
 
 FEATURES_REQUIRED = periph_adc
 CONFIG_MODULE_PERIPH_ADC=y

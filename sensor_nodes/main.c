@@ -89,6 +89,15 @@ extern int rain_cmd(int argc, char **argv);
 extern void rain_init(void);
 #endif
 
+#ifdef UV_SENSOR
+#include "uv_sensor.h"
+#endif
+#ifdef UV_SENSOR
+extern int uv_cmd(int argc, char **argv);
+extern void uv_init(void);
+#endif
+
+
 static const shell_command_t shell_commands[] = {
 #ifdef DHT_SENSOR
     {"dht", "Reads temperature and humidity (default GPIO: 27).", dht_cmd},
@@ -125,6 +134,10 @@ int main(void)
 
 #ifdef RAIN_SENSOR
     rain_init();
+#endif
+
+#ifdef UV_SENSOR
+    uv_init();
 #endif
 
     wot_td_coap_server_init();
