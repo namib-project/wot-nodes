@@ -9,6 +9,11 @@ BOARD ?= esp32-wroom-32
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE ?= $(CURDIR)/../RIOT
 
+# Set this variable to any value, if the sensor is in use.
+DHT=
+RAIN=
+UV=
+
 # GPIO Bindings
 DHT_GPIO = GPIO27
 RAIN_GPIO = GPIO32
@@ -48,14 +53,36 @@ USEMODULE += wot_coap
 USEMODULE += wot_coap_config
 
 # Triggers for Node Configuration. Currently all are required.
+ifdef DHT
 CFLAGS += -DDHT_SENSOR
+endif
+ifdef RAIN
 CFLAGS += -DRAIN_SENSOR
+endif
+ifdef UV
 CFLAGS += -DUV_SENSOR
+endif
 
 # TODO: Rework modular system
-WOT_THING_MODEL += wot-config/thing-model.json
-WOT_INSTANCE_INFO += wot-config/instance.json
-
+# TODO: Add WoT definitions for UV sensor
+ifdef DHT
+ifdef RAIN
+BOTH=1;
+endif
+endif
+ifdef BOTH
+WOT_THING_MODEL += wot-config/thing-model.tm.json
+WOT_INSTANCE_INFO += wot-config/instance.td.json
+else
+ifdef DHT
+WOT_THING_MODEL += wot-config/dht_thing-model.tm.json
+WOT_INSTANCE_INFO += wot-config/dht_instance.td.json
+endif
+ifdef RAIN
+WOT_THING_MODEL += wot-config/rain_thing-model.tm.json
+WOT_INSTANCE_INFO += wot-config/rain_instance.td.json
+endif
+endif
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
 CFLAGS += -DRAIN_GPIO=$(RAIN_GPIO)
 CFLAGS += -DUV_GPIO=$(UV_GPIO)
