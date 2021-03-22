@@ -294,7 +294,8 @@ ssize_t _dht_temp_unit_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *
 {
     (void)ctx;
     char bufstr[2];
-    sprintf(bufstr, "%u", sensor_get_temperature_unit());
+    sprintf(bufstr, "%s", unit_string[sensor_get_temperature_unit()]);
+    printf("%s", bufstr);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
     coap_opt_add_format(pdu, COAP_FORMAT_JSON);

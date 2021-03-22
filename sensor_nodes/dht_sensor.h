@@ -2,6 +2,7 @@
 #define SENSOR_H_
 
 typedef enum units {C, K, F} Unit;
+static const char * const unit_string[]={"C", "K", "F"};
 bool validUnit(unsigned int i);//needs to get modified if the number of supported units change
 
 int dht_sensor_init(void);

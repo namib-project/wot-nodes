@@ -13,7 +13,7 @@
         "F",
         "K"
       ],
-      "type": "integer"
+      "type": "string"
     },
     "temperature_range": {
       "title": "range",
