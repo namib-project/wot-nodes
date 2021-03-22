@@ -102,6 +102,9 @@ static const shell_command_t shell_commands[] = {
 #ifdef DHT_SENSOR
     {"dht", "Reads temperature and humidity (default GPIO: 27).", dht_cmd},
 #endif
+#ifdef UV_SENSOR
+    {"uv", "Reads UV sensor data (default GPIO: 33).", uv_cmd},
+#endif
     {NULL, NULL, NULL}};
 
 int main(void)
