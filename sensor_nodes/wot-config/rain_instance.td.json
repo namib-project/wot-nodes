@@ -12,7 +12,6 @@
   },
   "properties": {
     "water_value": {
-      "type": "boolean",
       "forms": [
         {
           "riot_os:handler_function": "_rain_value_handler",
@@ -23,7 +22,6 @@
       ]
     },
     "water_measurement": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_rain_measurement_handler",
@@ -34,7 +32,6 @@
       ]
     },
     "water_precision": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_rain_precision_handler",
@@ -45,7 +42,6 @@
       ]
     },
     "water_range": {
-      "type": "integer",
       "forms": [
         {
           "riot_os:handler_function": "_rain_range_handler",
@@ -56,7 +52,6 @@
       ]
     },
     "water_step": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_rain_step_handler",
