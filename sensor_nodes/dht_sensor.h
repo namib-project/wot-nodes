@@ -7,14 +7,16 @@ bool validUnit(unsigned int i);//needs to get modified if the number of supporte
 
 int dht_sensor_init(void);
 int dht_cmd(int argc, char **argv);
-int sensor_get_temperature(void);
-int sensor_get_humidity(void);
+
+int sensor_get_temperature(int *temp_i);
 Unit sensor_get_temperature_unit(void);
 int* sensor_get_temperature_range(void);
 int sensor_get_temperature_step(void);
 int sensor_get_temperature_precision(void);
 void sensor_set_temperature_unit(Unit u);
+void convertTo(int *temp_i);
 
+int sensor_get_humidity(int *hum_i);
 char* sensor_get_humidity_unit(void);
 int sensor_get_humidity_min_range(void);
 int sensor_get_humidity_max_range(void);
