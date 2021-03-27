@@ -14,6 +14,44 @@
 #include "rain_sensor.h"
 #endif
 
+#ifndef INITIAL_LOCATION_NAME
+#define INITIAL_LOCATION_NAME       "Wohnzimmer"
+#endif
+
+#ifndef MAX_LOCATION_NAME_LENGTH
+#define MAX_LOCATION_NAME_LENGTH    50
+#endif
+
+char location_name[MAX_LOCATION_NAME_LENGTH] = INITIAL_LOCATION_NAME;
+
+ssize_t _location_handler(coap_pkt_t* pdu, uint8_t *buf, size_t len, void *ctx)
+{
+    (void)ctx;
+
+    /* read coap method type in packet */
+    unsigned method_flag = coap_method2flag(coap_get_code_detail(pdu));
+
+    switch (method_flag) {
+        case COAP_GET:
+            gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
+            coap_opt_add_format(pdu, COAP_FORMAT_JSON);
+            size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
+
+            memcpy(pdu->payload, location_name, strlen(location_name));
+            return resp_len + strlen(location_name);
+        case COAP_PUT:
+            if (pdu->payload_len <= MAX_LOCATION_NAME_LENGTH) {
+                memcpy(location_name, (char *)pdu->payload, pdu->payload_len);
+                return gcoap_response(pdu, buf, len, COAP_CODE_CHANGED);
+            }
+            else {
+                return gcoap_response(pdu, buf, len, COAP_CODE_BAD_REQUEST);
+            }
+    }
+
+    return 0;
+}
+
 #ifdef DHT_SENSOR
 
 int handler_t100;

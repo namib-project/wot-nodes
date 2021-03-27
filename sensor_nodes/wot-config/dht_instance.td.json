@@ -12,6 +12,14 @@
     "de": "Ein Sensor-Node für den Einsatz im Bachelorprojkt NAMIB"
   },
   "properties": {
+    "location": {
+      "forms": [
+        {
+          "riot_os:handler_function": "_location_handler",
+          "href": "/location"
+        }
+      ]
+    },
     "temperature": {
       "forms": [
         {

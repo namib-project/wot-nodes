@@ -58,6 +58,9 @@ ifdef RAIN
 CFLAGS += -DRAIN_SENSOR
 endif
 
+# Define initial location name
+CFLAGS += -DINITIAL_LOCATION_NAME=\"Balkon\"
+
 # TODO: Rework modular system
 ifdef DHT
 ifdef RAIN

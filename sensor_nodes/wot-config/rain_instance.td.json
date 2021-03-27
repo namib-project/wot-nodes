@@ -11,6 +11,14 @@
     "en": "A Sensor Node für den Einsatz im Bachelorprojkt NAMIB"
   },
   "properties": {
+    "location": {
+      "forms": [
+        {
+          "riot_os:handler_function": "_location_handler",
+          "href": "/location"
+        }
+      ]
+    },
     "water_value": {
       "forms": [
         {
