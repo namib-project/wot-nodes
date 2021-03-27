@@ -2,13 +2,14 @@
   "@context": ["https://www.w3.org/2019/wot/td/v1", { "@language": "de" },
     { "namib": "https://namib.uni-bremen.de/wot#" }],
   "@type": ["namib:SensorNode"],
+  "id": "urn:namib:sensor:dht:sensor-node-1",
   "titles": {
-    "de": "NAMIB-DHT-Sensor-Node",
-    "en": "NAMIB DHT Sensor Node"
+    "de": "NAMIB-DHT (innen)",
+    "en": "NAMIB DHT (indoors)"
   },
   "descriptions": {
-    "de": "A sensor node designed to be used in the undergraduate project NAMIB",
-    "en": "A Sensor Node für den Einsatz im Bachelorprojkt NAMIB"
+    "en": "A sensor node designed to be used in the undergraduate project NAMIB",
+    "de": "Ein Sensor-Node für den Einsatz im Bachelorprojkt NAMIB"
   },
   "properties": {
     "temperature": {

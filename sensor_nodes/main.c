@@ -40,7 +40,7 @@
 static char _dhcpv6_client_stack[DHCPV6_CLIENT_STACK_SIZE];
 #ifdef DHT_SENSOR
 static char _dht_humidity_stack[THREAD_STACKSIZE_DEFAULT];
-extern int sensor_set_extreme(void);
+extern int sensor_set_extreme(int *hum);
 #endif
 extern int _gnrc_netif_config(int argc, char **argv);
 extern int _gnrc_ipv6_nib(int argc, char **argv);
@@ -70,8 +70,10 @@ void *_fetch_humidity_values(void *args)
 {
     while (1)
     {
-        int num = sensor_set_extreme();
-        printf("Measured humidity of %d.%01d%%\n", num / 10, num % 10);
+        int num;
+        if (sensor_set_extreme(&num)) {
+            printf("Measured humidity of %d.%01d%%\n", num / 10, num % 10);
+        }
         xtimer_sleep(20);
     }
     return NULL;
