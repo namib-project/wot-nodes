@@ -1,5 +1,10 @@
 {
   "properties": {
+    "location": {
+      "title": "Sensor node location",
+      "description": "Room or place the sensor is located at.",
+      "type": "string"
+    },
     "temperature": {
       "title": "temperature",
       "description": "The current temperature setting or measurement.",
