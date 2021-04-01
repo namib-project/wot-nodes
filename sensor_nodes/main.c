@@ -29,7 +29,6 @@
 #include <stddef.h>
 
 #include "net/gnrc/netif.h"
-#include "net/dhcpv6/client.h"
 #include "net/sock.h"
 #include "xtimer.h"
 #include "net/wot/coap.h"
@@ -37,33 +36,12 @@
 #include "net/gnrc/pktdump.h"
 #include "net/gnrc.h"
 
-static char _dhcpv6_client_stack[DHCPV6_CLIENT_STACK_SIZE];
 #ifdef DHT_SENSOR
 static char _dht_humidity_stack[THREAD_STACKSIZE_DEFAULT];
 extern int sensor_set_extreme(int *hum);
 #endif
 extern int _gnrc_netif_config(int argc, char **argv);
 extern int _gnrc_ipv6_nib(int argc, char **argv);
-
-void *_dhcpv6_client_thread(void *args)
-{
-    event_queue_t event_queue;
-    gnrc_netif_t *netif = gnrc_netif_iter(NULL);
-
-    (void)args;
-    /* initialize client event queue */
-    event_queue_init(&event_queue);
-    /* initialize DHCPv6 client on any interface */
-    dhcpv6_client_init(&event_queue, SOCK_ADDR_ANY_NETIF);
-    /* configure client to request prefix delegation of /64 subnet
-     * interface netif */
-    dhcpv6_client_req_ia_pd(netif->pid, 64U);
-    /* start DHCPv6 client */
-    dhcpv6_client_start();
-    /* start event loop of DHCPv6 client */
-    event_loop(&event_queue); /* never returns */
-    return NULL;
-}
 
 #ifdef DHT_SENSOR
 void *_fetch_humidity_values(void *args)
@@ -99,20 +77,6 @@ static const shell_command_t shell_commands[] = {
 
 int main(void)
 {
-    /* DHCPv6 Client */
-
-    char *pl[] = {"nib", "prefix"};
-
-    _gnrc_netif_config(0, NULL);
-    thread_create(_dhcpv6_client_stack, DHCPV6_CLIENT_STACK_SIZE,
-                  DHCPV6_CLIENT_PRIORITY, THREAD_CREATE_STACKTEST,
-                  _dhcpv6_client_thread, NULL, "dhcpv6-client");
-    xtimer_sleep(5);
-
-    /* global address should now be configured */
-
-    _gnrc_netif_config(0, NULL);
-    _gnrc_ipv6_nib(2, pl);
 
     /* for the thread running the shell */
     msg_init_queue(_main_msg_queue, MAIN_QUEUE_SIZE);
