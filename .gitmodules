@@ -1,4 +1,4 @@
 [submodule "RIOT"]
 	path = RIOT
-	url = https://github.com/Citrullin/RIOT.git
-	branch = wot_gcoap
+	url = ../riot
+	branch = mud-and-wot
