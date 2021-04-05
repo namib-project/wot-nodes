@@ -25,6 +25,9 @@ USEMODULE += gnrc_netdev_default
 USEMODULE += auto_init_gnrc_netif
 # Specify the mandatory networking modules
 USEMODULE += gnrc_ipv6_default
+USEMODULE += gnrc_dhcpv6_client
+USEMODULE += auto_init_dhcpv6_client
+USEMODULE += gnrc_dhcpv6_client_mud_url
 USEMODULE += gcoap
 # Additional networking modules that can be dropped if not needed
 USEMODULE += gnrc_icmpv6_echo
@@ -65,6 +68,9 @@ endif
 
 # Define initial location name
 CFLAGS += -DINITIAL_LOCATION_NAME=\"Balkon\"
+
+# Define MUD-URL
+CFLAGS += -DDHCPV6_CLIENT_MUD_URL=\"https://git.sr.ht/~s0/MUD-Files/blob/master/temperature-node.json\"
 
 # TODO: Rework modular system
 ifeq ($(DHT), 1)
