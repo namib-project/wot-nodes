@@ -17,7 +17,7 @@ UV=
 # GPIO Bindings
 DHT_GPIO = GPIO27
 RAIN_GPIO = GPIO32
-UV_GPIO = GPIO33
+UV_GPIO = GPIO12
 
 # Include packages that pull up and auto-init the link layer.
 # NOTE: 6LoWPAN will be included if IEEE802.15.4 devices are present
@@ -64,21 +64,20 @@ CFLAGS += -DUV_SENSOR
 endif
 
 # TODO: Rework modular system
-# TODO: Add WoT definitions for UV sensor
-ifdef DHT
-ifdef RAIN
-BOTH=1;
+ifeq ($(DHT), 1)
+ifeq ($(RAIN), 1)
+BOTH := 1;
 endif
 endif
-ifdef BOTH
+ifeq ($(BOTH), 1)
 WOT_THING_MODEL += wot-config/thing-model.tm.json
 WOT_INSTANCE_INFO += wot-config/instance.td.json
 else
-ifdef DHT
+ifeq ($(DHT), 1)
 WOT_THING_MODEL += wot-config/dht_thing-model.tm.json
 WOT_INSTANCE_INFO += wot-config/dht_instance.td.json
 endif
-ifdef RAIN
+ifeq ($(RAIN), 1)
 WOT_THING_MODEL += wot-config/rain_thing-model.tm.json
 WOT_INSTANCE_INFO += wot-config/rain_instance.td.json
 endif
