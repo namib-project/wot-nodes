@@ -12,7 +12,6 @@
     },
     "properties": {
         "water_value": {
-            "type": "boolean",
             "forms": [
                 {
                     "riot_os:handler_function": "_rain_value_handler",
@@ -23,7 +22,6 @@
             ]
         },
         "water_measurement": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_rain_measurement_handler",
@@ -34,7 +32,6 @@
             ]
         },
         "water_precision": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_rain_precision_handler",
@@ -45,7 +42,6 @@
             ]
         },
         "water_range": {
-            "type": "integer",
             "forms": [
                 {
                     "riot_os:handler_function": "_rain_range_handler",
@@ -56,7 +52,6 @@
             ]
         },
         "water_step": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_rain_step_handler",
@@ -67,7 +62,6 @@
             ]
         },
         "temperature": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_temp_handler",
@@ -78,8 +72,6 @@
             ]
         },
         "temperature_units": {
-            "type": "integer",
-            "description": "The integer value represents one of the enums C, F, K",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_temp_unit_handler",
@@ -90,7 +82,6 @@
             ]
         },
         "temperature_range": {
-            "type": "object",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_temp_range_handler",
@@ -101,7 +92,6 @@
             ]
         },
         "temperature_step": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_temp_step_handler",
@@ -112,7 +102,6 @@
             ]
         },
         "temperature_precision": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_temp_precision_handler",
@@ -123,7 +112,6 @@
             ]
         },
         "humidity_value": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_hum_handler",
@@ -134,7 +122,6 @@
             ]
         },
         "humidity_Min_Measured_Value": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_hum_min_value_handler",
@@ -145,7 +132,6 @@
             ]
         },
         "humidity_Max_Measured_Value": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_hum_max_value_handler",
@@ -156,7 +142,6 @@
             ]
         },
         "humidity_Min_Range_Value": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_hum_min_range_handler",
@@ -167,7 +152,6 @@
             ]
         },
         "humidity_Max_Range_Value": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_hum_max_range_handler",
@@ -178,7 +162,6 @@
             ]
         },
         "humidity_Units": {
-            "type": "string",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_hum_unit_handler",
@@ -189,7 +172,6 @@
             ]
         },
         "humidity_Precision": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_hum_precision_handler",
@@ -200,7 +182,6 @@
             ]
         },
         "humidity_Step": {
-            "type": "number",
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_hum_step_handler",

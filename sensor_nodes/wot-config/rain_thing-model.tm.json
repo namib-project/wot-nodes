@@ -1,9 +1,14 @@
 {
   "properties": {
+    "location": {
+      "title": "Sensor node location",
+      "description": "Room or place the sensor is located at.",
+      "type": "string"
+    },
     "water_value": {
       "title": "value",
       "description": "true = sensed, false = not sensed.",
-      "writable": false,
+      "readOnly": true,
       "type": "boolean"
     },
     "water_measurement": {
@@ -15,14 +20,14 @@
     "water_precision": {
       "title": "precision",
       "type": "number",
-      "writable": false,
+      "readOnly": true,
       "description": "When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision"
     },
     "water_range": {
       "title": "range",
       "type": "array",
       "description": "The valid range for the Property in the Resource as a number. The first value in the array is the minimum value, the second value in the array is the maximum value.",
-      "writable": false,
+      "readOnly": true,
       "minItems": 2,
       "maxItems": 2,
       "items": {
@@ -32,7 +37,7 @@
     "water_step": {
       "title": "step",
       "description": "Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.",
-      "writable": false,
+      "readOnly": true,
       "type": "number"
     },
     "required": [

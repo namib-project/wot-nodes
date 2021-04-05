@@ -2,17 +2,25 @@
   "@context": ["https://www.w3.org/2019/wot/td/v1", { "@language": "de" },
     { "namib": "https://namib.uni-bremen.de/wot#" }],
   "@type": ["namib:SensorNode"],
+  "id": "urn:namib:sensor:dht:sensor-node-1",
   "titles": {
-    "de": "NAMIB-DHT-Sensor-Node",
-    "en": "NAMIB DHT Sensor Node"
+    "de": "NAMIB-DHT (innen)",
+    "en": "NAMIB DHT (indoors)"
   },
   "descriptions": {
-    "de": "A sensor node designed to be used in the undergraduate project NAMIB",
-    "en": "A Sensor Node für den Einsatz im Bachelorprojkt NAMIB"
+    "en": "A sensor node designed to be used in the undergraduate project NAMIB",
+    "de": "Ein Sensor-Node für den Einsatz im Bachelorprojkt NAMIB"
   },
   "properties": {
+    "location": {
+      "forms": [
+        {
+          "riot_os:handler_function": "_location_handler",
+          "href": "/location"
+        }
+      ]
+    },
     "temperature": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_temp_handler",
@@ -23,8 +31,6 @@
       ]
     },
     "temperature_units": {
-      "type": "integer",
-      "description": "The integer value represents one of the enums C, F, K",
       "forms": [
         {
           "riot_os:handler_function": "_dht_temp_unit_handler",
@@ -35,7 +41,6 @@
       ]
     },
     "temperature_range": {
-      "type": "object",
       "forms": [
         {
           "riot_os:handler_function": "_dht_temp_range_handler",
@@ -46,7 +51,6 @@
       ]
     },
     "temperature_step": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_temp_step_handler",
@@ -57,7 +61,6 @@
       ]
     },
     "temperature_precision": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_temp_precision_handler",
@@ -68,7 +71,6 @@
       ]
     },
     "humidity_value": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_hum_handler",
@@ -79,7 +81,6 @@
       ]
     },
     "humidity_Min_Measured_Value": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_hum_min_value_handler",
@@ -90,7 +91,6 @@
       ]
     },
     "humidity_Max_Measured_Value": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_hum_max_value_handler",
@@ -101,7 +101,6 @@
       ]
     },
     "humidity_Min_Range_Value": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_hum_min_range_handler",
@@ -112,7 +111,6 @@
       ]
     },
     "humidity_Max_Range_Value": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_hum_max_range_handler",
@@ -123,7 +121,6 @@
       ]
     },
     "humidity_Units": {
-      "type": "string",
       "forms": [
         {
           "riot_os:handler_function": "_dht_hum_unit_handler",
@@ -134,7 +131,6 @@
       ]
     },
     "humidity_Precision": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_hum_precision_handler",
@@ -145,7 +141,6 @@
       ]
     },
     "humidity_Step": {
-      "type": "number",
       "forms": [
         {
           "riot_os:handler_function": "_dht_hum_step_handler",

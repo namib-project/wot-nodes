@@ -14,13 +14,58 @@
 #include "rain_sensor.h"
 #endif
 
+#ifndef INITIAL_LOCATION_NAME
+#define INITIAL_LOCATION_NAME       "Wohnzimmer"
+#endif
+
+#ifndef MAX_LOCATION_NAME_LENGTH
+#define MAX_LOCATION_NAME_LENGTH    50
+#endif
+
+char location_name[MAX_LOCATION_NAME_LENGTH] = INITIAL_LOCATION_NAME;
+
+ssize_t _location_handler(coap_pkt_t* pdu, uint8_t *buf, size_t len, void *ctx)
+{
+    (void)ctx;
+
+    /* read coap method type in packet */
+    unsigned method_flag = coap_method2flag(coap_get_code_detail(pdu));
+
+    switch (method_flag) {
+        case COAP_GET:
+            gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
+            coap_opt_add_format(pdu, COAP_FORMAT_JSON);
+            size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
+
+            memcpy(pdu->payload, location_name, strlen(location_name));
+            return resp_len + strlen(location_name);
+        case COAP_PUT:
+            if (pdu->payload_len <= MAX_LOCATION_NAME_LENGTH) {
+                memcpy(location_name, (char *)pdu->payload, pdu->payload_len);
+                return gcoap_response(pdu, buf, len, COAP_CODE_CHANGED);
+            }
+            else {
+                return gcoap_response(pdu, buf, len, COAP_CODE_BAD_REQUEST);
+            }
+    }
+
+    return 0;
+}
+
 #ifdef DHT_SENSOR
+
+int handler_t100;
+int handler_h100;
+
 ssize_t _dht_hum_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
 {
     (void)ctx;
-    int h100 = sensor_get_humidity();
+    
+    if (sensor_get_humidity(&handler_h100) != 0) {
+        return gcoap_response(pdu, buf, len, COAP_CODE_INTERNAL_SERVER_ERROR);
+    }
     char bufstr[10];
-    sprintf(bufstr, "%d.%01d", h100 / 10, h100 % 10);
+    sprintf(bufstr, "%d.%01d", handler_h100 / 10, handler_h100 % 10);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
     coap_opt_add_format(pdu, COAP_FORMAT_JSON);
@@ -266,10 +311,13 @@ ssize_t _dht_hum_reset_min_max_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len
 ssize_t _dht_temp_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
 {
     (void)ctx;
-    int t100 = sensor_get_temperature();
-    int rest = t100 % 100;
+    if (sensor_get_temperature(&handler_t100) != 0) {
+        return gcoap_response(pdu, buf, len, COAP_CODE_INTERNAL_SERVER_ERROR);
+    }
+    convertTo(&handler_t100);
+    int rest = handler_t100 % 10;
     char bufstr[10];
-    sprintf(bufstr, "%d.%02d", t100 / 100, rest);
+    sprintf(bufstr, "%d.%02d", handler_t100 / 10, rest);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
     coap_opt_add_format(pdu, COAP_FORMAT_JSON);
@@ -294,7 +342,8 @@ ssize_t _dht_temp_unit_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *
 {
     (void)ctx;
     char bufstr[2];
-    sprintf(bufstr, "%u", sensor_get_temperature_unit());
+    sprintf(bufstr, "%s", unit_string[sensor_get_temperature_unit()]);
+    printf("%s", bufstr);
 
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
     coap_opt_add_format(pdu, COAP_FORMAT_JSON);

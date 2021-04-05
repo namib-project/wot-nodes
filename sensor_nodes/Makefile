@@ -63,6 +63,9 @@ ifdef UV
 CFLAGS += -DUV_SENSOR
 endif
 
+# Define initial location name
+CFLAGS += -DINITIAL_LOCATION_NAME=\"Balkon\"
+
 # TODO: Rework modular system
 ifeq ($(DHT), 1)
 ifeq ($(RAIN), 1)
