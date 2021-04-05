@@ -10,14 +10,15 @@ BOARD ?= esp32-wroom-32
 RIOTBASE ?= $(CURDIR)/../RIOT
 
 # Set this variable to any value, if the sensor is in use.
-DHT=
-RAIN=
-UV=
+DHT ?= 0
+RAIN ?= 0
+UV ?= 1
 
 # GPIO Bindings
 DHT_GPIO = GPIO27
 RAIN_GPIO = GPIO32
-UV_GPIO = GPIO12
+UV_ADC_LINE = 11 # GPIO33
+UV_REFERENCE_ADC_LINE = 13 # GPIO35
 
 # Include packages that pull up and auto-init the link layer.
 # NOTE: 6LoWPAN will be included if IEEE802.15.4 devices are present
@@ -92,8 +93,8 @@ WOT_INSTANCE_INFO += wot-config/rain_instance.td.json
 endif
 endif
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
-CFLAGS += -DRAIN_GPIO=$(RAIN_GPIO)
-CFLAGS += -DUV_GPIO=$(UV_GPIO)
+CFLAGS += -DUV_ADC_LINE=$(UV_ADC_LINE)
+CFLAGS += -DUV_REFERENCE_ADC_LINE=$(UV_REFERENCE_ADC_LINE)
 
 FEATURES_REQUIRED = periph_adc
 CONFIG_MODULE_PERIPH_ADC=y
