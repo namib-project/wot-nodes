@@ -11,6 +11,7 @@
 
 #define RES                       (ADC_RES_12BIT)
 #define MAX_UV_VALUE              (15.0)
+#define VOLTS                     (3.3)
 #ifndef UV_ADC_LINE
 #define UV_ADC_LINE               (11) /* GPIO33 */
 #endif
@@ -25,6 +26,7 @@ const float step_uv = 1;
 
 int uv_reference_val;
 int recent_val_uv;
+float outputVoltage;
 float uvIntensity;
 
 int uv_cmd(int argc, char **argv) {
@@ -32,6 +34,7 @@ int uv_cmd(int argc, char **argv) {
         update_uv();
         printf("UV reference value: %d\n", uv_reference_val);
         printf("UV value: %d\n", recent_val_uv);
+        printf("Output voltage: %.2f\n", outputVoltage);
         printf("UV intensity: %.2f mW/cm²\n", uvIntensity);
         return 0;
     }
@@ -40,10 +43,16 @@ int uv_cmd(int argc, char **argv) {
     return 1;
 }
 
+float mapfloat(float x, float in_min, float in_max, float out_min, float out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 void update_uv(void) {
     uv_reference_val = adc_sample(ADC_LINE(UV_ADC_LINE), RES);
     recent_val_uv = adc_sample(ADC_LINE(UV_REFERENCE_ADC_LINE), RES);
-    uvIntensity = MAX_UV_VALUE / uv_reference_val * recent_val_uv;
+    outputVoltage = VOLTS / uv_reference_val * recent_val_uv;
+    uvIntensity = mapfloat(outputVoltage, 0.89, 2.8, 0.0, MAX_UV_VALUE);
 }
 
 float get_uv_step(void) {
