@@ -10,7 +10,7 @@ BOARD ?= esp32-wroom-32
 RIOTBASE ?= $(CURDIR)/../RIOT
 
 # Set this variable to any value, if the sensor is in use.
-DHT ?= 0
+DHT ?= 1
 RAIN ?= 0
 UV ?= 1
 
