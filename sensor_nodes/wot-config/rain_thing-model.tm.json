@@ -15,7 +15,7 @@
       "title": "measurement",
       "type": "number",
       "description": "Measured value for this sensor in units of litres/hr",
-      "writable": false
+      "readOnly": true
     },
     "water_precision": {
       "title": "precision",

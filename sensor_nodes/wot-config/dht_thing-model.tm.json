@@ -8,7 +8,8 @@
     "temperature": {
       "title": "temperature",
       "description": "The current temperature setting or measurement.",
-      "type": "number"
+      "type": "number",
+      "readOnly": true
     },
     "temperature_units": {
       "title": "units",
