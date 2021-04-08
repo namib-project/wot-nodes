@@ -1,0 +1,26 @@
+{
+    "properties": {
+        "location": {
+            "title": "Sensor node location",
+            "description": "Room or place where the sensor is located.",
+            "type": "string"
+        },
+        "uv_value": {
+            "title": "Measured UV value in W/m²",
+            "titles": {
+                "en": "Measured UV value in W/m²",
+                "de": "Gemessener UV-Wert in W/m²"
+            },
+            "type": "number",
+            "unit": "W/m2",
+            "readOnly": true
+        }
+    },
+    "actions": {},
+    "events": {},
+    "created": "2021-04-08T11:27:00Z",
+    "modified": "2021-04-98T11:27:00Z",
+    "@context": ["http://www.w3.org/ns/td"],
+    "@type": "ThingModel",
+    "title": "NAMIB-UV-Sensor-Node"
+}
