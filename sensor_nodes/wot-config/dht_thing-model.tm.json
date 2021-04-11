@@ -1,10 +1,5 @@
 {
   "properties": {
-    "location": {
-      "title": "Sensor node location",
-      "description": "Room or place where the sensor is located.",
-      "type": "string"
-    },
     "temperature": {
       "title": "temperature",
       "description": "The current temperature setting or measurement.",
@@ -107,7 +102,7 @@
   "created": "2021-03-11T17:00:12.146Z",
   "modified": "2021-03-11T17:00:12.146Z",
   "@context": [
-    "https://www.w3.org/2019/wot/td/v1"
+    "http://www.w3.org/ns/td"
   ],
   "@type": "ThingModel",
   "title": "NAMIB-DHT-Sensor-Node"

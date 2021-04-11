@@ -1,0 +1,15 @@
+{
+    "@context": ["https://www.w3.org/2019/wot/td/v1", { "@language": "de" }, 
+        { "namib": "https://namib.uni-bremen.de/wot#" }],
+    "@type": ["namib:SensorNode"],
+    "title": "NAMIB-Sensor-Node",
+    "titles": {
+        "de": "NAMIB-Sensor-Node",
+        "en": "NAMIB Sensor Node"
+    },
+    "description": "Ein Sensor-Node für den Einsatz im Bachelorprojekt NAMIB",
+    "descriptions": {
+        "de": "Ein Sensor-Node für den Einsatz im Bachelorprojekt NAMIB",
+        "en": "A sensor node designed to be used in the undergraduate project NAMIB"
+    }
+}
