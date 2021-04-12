@@ -70,6 +70,7 @@ CFLAGS += -DDHCPV6_CLIENT_MUD_URL=\"https://git.sr.ht/~s0/MUD-Files/blob/master/
 WOT_META_DATA := wot-config/meta-data.json
 WOT_BINDINGS_PATH := wot-config/bindings.json
 WOT_PLACEHOLDERS_PATH := wot-config/placeholders.json
+WOT_THING_MODELS += wot-config/location.tm.json
 
 ifeq ($(DHT), 1)
 WOT_THING_MODELS += wot-config/dht_thing-model.tm.json
