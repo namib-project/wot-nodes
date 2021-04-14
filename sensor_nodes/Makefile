@@ -9,7 +9,7 @@ BOARD ?= esp32-wroom-32
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE ?= $(CURDIR)/../RIOT
 
-# Set this variable to any value, if the sensor is in use.
+# Set correcsponding variable to 1 if sensor is available:
 DHT := 1
 RAIN := 1
 
@@ -53,7 +53,7 @@ USEMODULE += wot_core
 USEMODULE += wot_coap
 USEMODULE += wot_coap_config
 
-# Triggers for Node Configuration. Currently all are required.
+# Triggers for Node Configuration.
 ifeq ($(DHT), 1)
 CFLAGS += -DDHT_SENSOR
 endif
