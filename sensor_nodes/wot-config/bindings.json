@@ -13,8 +13,7 @@
                 {
                     "riot_os:handler_function": "_rain_value_handler",
                     "op": "readproperty",
-                    "href": "/rain/value",
-                    "cov:methodName": "GET"
+                    "href": "/rain/value"
                 }
             ]
         },
@@ -23,8 +22,7 @@
                 {
                     "riot_os:handler_function": "_rain_measurement_handler",
                     "op": "readproperty",
-                    "href": "/rain/mesurement",
-                    "cov:methodName": "GET"
+                    "href": "/rain/mesurement"
                 }
             ]
         },
@@ -33,8 +31,7 @@
                 {
                     "riot_os:handler_function": "_rain_precision_handler",
                     "op": "readproperty",
-                    "href": "/rain/precision",
-                    "cov:methodName": "GET"
+                    "href": "/rain/precision"
                 }
             ]
         },
@@ -43,8 +40,7 @@
                 {
                     "riot_os:handler_function": "_rain_range_handler",
                     "op": "readproperty",
-                    "href": "/rain/range",
-                    "cov:methodName": "GET"
+                    "href": "/rain/range"
                 }
             ]
         },
@@ -53,8 +49,7 @@
                 {
                     "riot_os:handler_function": "_rain_step_handler",
                     "op": "readproperty",
-                    "href": "/rain/step",
-                    "cov:methodName": "GET"
+                    "href": "/rain/step"
                 }
             ]
         },
@@ -63,8 +58,7 @@
                 {
                     "riot_os:handler_function": "_dht_temp_handler",
                     "op": "readproperty",
-                    "href": "/temperature/temperature",
-                    "cov:methodName": "GET"
+                    "href": "/temperature/temperature"
                 }
             ]
         },
@@ -73,8 +67,7 @@
                 {
                     "riot_os:handler_function": "_dht_temp_unit_handler",
                     "op": "readproperty",
-                    "href": "/temperature/unit",
-                    "cov:methodName": "GET"
+                    "href": "/temperature/unit"
                 }
             ]
         },
@@ -83,8 +76,7 @@
                 {
                     "riot_os:handler_function": "_dht_temp_range_handler",
                     "op": "readproperty",
-                    "href": "/temperature/range",
-                    "cov:methodName": "GET"
+                    "href": "/temperature/range"
                 }
             ]
         },
@@ -93,8 +85,7 @@
                 {
                     "riot_os:handler_function": "_dht_temp_step_handler",
                     "op": "readproperty",
-                    "href": "/temperature/step",
-                    "cov:methodName": "GET"
+                    "href": "/temperature/step"
                 }
             ]
         },
@@ -103,8 +94,7 @@
                 {
                     "riot_os:handler_function": "_dht_temp_precision_handler",
                     "op": "readproperty",
-                    "href": "/temperature/precision",
-                    "cov:methodName": "GET"
+                    "href": "/temperature/precision"
                 }
             ]
         },
@@ -113,8 +103,7 @@
                 {
                     "riot_os:handler_function": "_dht_hum_handler",
                     "op": "readproperty",
-                    "href": "/humidity/value",
-                    "cov:methodName": "GET"
+                    "href": "/humidity/value"
                 }
             ]
         },
@@ -123,8 +112,7 @@
                 {
                     "riot_os:handler_function": "_dht_hum_min_value_handler",
                     "op": "readproperty",
-                    "href": "/humidity/min_measured",
-                    "cov:methodName": "GET"
+                    "href": "/humidity/min_measured"
                 }
             ]
         },
@@ -133,8 +121,7 @@
                 {
                     "riot_os:handler_function": "_dht_hum_max_value_handler",
                     "op": "readproperty",
-                    "href": "/humidity/max_measured",
-                    "cov:methodName": "GET"
+                    "href": "/humidity/max_measured"
                 }
             ]
         },
@@ -143,8 +130,7 @@
                 {
                     "riot_os:handler_function": "_dht_hum_min_range_handler",
                     "op": "readproperty",
-                    "href": "/humidity/min_range",
-                    "cov:methodName": "GET"
+                    "href": "/humidity/min_range"
                 }
             ]
         },
@@ -153,8 +139,7 @@
                 {
                     "riot_os:handler_function": "_dht_hum_max_range_handler",
                     "op": "readproperty",
-                    "href": "/humidity/max_range",
-                    "cov:methodName": "GET"
+                    "href": "/humidity/max_range"
                 }
             ]
         },
@@ -163,8 +148,7 @@
                 {
                     "riot_os:handler_function": "_dht_hum_unit_handler",
                     "op": "readproperty",
-                    "href": "/humidity/unit",
-                    "cov:methodName": "GET"
+                    "href": "/humidity/unit"
                 }
             ]
         },
@@ -173,8 +157,7 @@
                 {
                     "riot_os:handler_function": "_dht_hum_precision_handler",
                     "op": "readproperty",
-                    "href": "/humidity/precision",
-                    "cov:methodName": "GET"
+                    "href": "/humidity/precision"
                 }
             ]
         },
@@ -183,8 +166,7 @@
                 {
                     "riot_os:handler_function": "_dht_hum_step_handler",
                     "op": "readproperty",
-                    "href": "/humidity/step",
-                    "cov:methodName": "GET"
+                    "href": "/humidity/step"
                 }
             ]
         }
@@ -195,8 +177,7 @@
                 {
                     "riot_os:handler_function": "_dht_hum_reset_min_max_handler",
                     "op": "invokeaction",
-                    "href": "/humidity/reset_min_max",
-                    "cov:methodName": "POST"
+                    "href": "/humidity/reset_min_max"
                 }
             ]
         }
