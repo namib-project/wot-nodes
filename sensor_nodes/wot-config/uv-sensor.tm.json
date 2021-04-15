@@ -1,10 +1,5 @@
 {
     "properties": {
-        "location": {
-            "title": "Sensor node location",
-            "description": "Room or place where the sensor is located.",
-            "type": "string"
-        },
         "uv_value": {
             "title": "Measured UV value in W/m²",
             "titles": {
