@@ -79,13 +79,13 @@ WOT_PLACEHOLDERS_PATH := wot-config/placeholders.json
 WOT_THING_MODELS += wot-config/location.tm.json
 
 ifeq ($(DHT), 1)
-WOT_THING_MODELS += wot-config/dht_thing-model.tm.json
+WOT_THING_MODELS += wot-config/dht-sensor.tm.json
 endif
 ifeq ($(RAIN), 1)
-WOT_THING_MODELS += wot-config/rain_thing-model.tm.json
+WOT_THING_MODELS += wot-config/rain-sensor.tm.json
 endif
 ifeq ($(UV), 1)
-WOT_THING_MODELS += wot-config/uv_thing-model.tm.json
+WOT_THING_MODELS += wot-config/uv-sensor.tm.json
 endif
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
 CFLAGS += -DUV_ADC_LINE=$(UV_ADC_LINE)
