@@ -1,13 +1,13 @@
 {
     "properties": {
         "uv_value": {
-            "title": "Measured UV value in W/m²",
+            "title": "Gemessener UV-Wert in mW/cm²",
             "titles": {
-                "en": "Measured UV value in W/m²",
-                "de": "Gemessener UV-Wert in W/m²"
+                "en": "Measured UV value in mW/cm²",
+                "de": "Gemessener UV-Wert in mW/cm²"
             },
             "type": "number",
-            "unit": "W/m2",
+            "unit": "mW/cm²",
             "readOnly": true
         }
     },
