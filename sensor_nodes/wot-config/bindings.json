@@ -9,6 +9,15 @@
                 }
             ]
         },
+        "uv_value": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_uv_value_handler",
+                    "op": "readproperty",
+                    "href": "/uv/value"
+                }
+            ]
+        },
         "water_value": {
             "forms": [
                 {
