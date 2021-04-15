@@ -1,16 +1,13 @@
 {
-    "@context": ["https://www.w3.org/2019/wot/td/v1", { "@language": "de" }, 
-        { "namib": "https://namib.uni-bremen.de/wot#" }],
-    "@type": ["namib:SensorNode"],
-    "titles": {
-        "de": "NAMIB-Sensor-Node",
-        "en": "NAMIB Sensor Node"
-    },
-    "descriptions": {
-        "de": "A sensor node designed to be used in the undergraduate project NAMIB",
-        "en": "A Sensor Node für den Einsatz im Bachelorprojkt NAMIB"
-    },
     "properties": {
+        "location": {
+            "forms": [
+                {
+                    "riot_os:handler_function": "_location_handler",
+                    "href": "/location"
+                }
+            ]
+        },
         "water_value": {
             "forms": [
                 {
