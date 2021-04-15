@@ -13,8 +13,10 @@ USEMODULE += wot_coap
 USEMODULE += wot_coap_config
 USEMODULE += xtimer
 
-WOT_THING_MODEL += wot-config/thing_model.json
-WOT_INSTANCE_INFO += wot-config/instance.json
+WOT_META_DATA := wot-config/meta-data.json
+WOT_BINDINGS_PATH := wot-config/bindings.json
+WOT_PLACEHOLDERS_PATH := wot-config/placeholders.json
+WOT_THING_MODELS += wot-config/thing_model.json
 
 ifeq ($(BOARD),esp32-wroom-32)
 # ESP wifi configuration
@@ -58,6 +60,10 @@ USEMODULE += gnrc_icmpv6_echo
 USEMODULE += netstats_l2
 USEMODULE += netstats_ipv6
 USEMODULE += netstats_rpl
+
+USEMODULE += gnrc_dhcpv6_client
+USEMODULE += auto_init_dhcpv6_client
+# USEMODULE += gnrc_dhcpv6_client_mud_url  # TODO: Add MUD URL
 
 # Comment this out to disable code in RIOT that does safety checking
 # which is not needed in a production environment but helps in the

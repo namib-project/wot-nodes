@@ -9,9 +9,9 @@ BOARD ?= esp32-wroom-32
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE ?= $(CURDIR)/../RIOT
 
-# Set this variable to any value, if the sensor is in use.
-DHT=
-RAIN=
+# Set correcsponding variable to 1 if sensor is available:
+DHT := 1
+RAIN := 1
 
 # GPIO Bindings
 DHT_GPIO = GPIO27
@@ -53,11 +53,11 @@ USEMODULE += wot_core
 USEMODULE += wot_coap
 USEMODULE += wot_coap_config
 
-# Triggers for Node Configuration. Currently all are required.
-ifdef DHT
+# Triggers for Node Configuration.
+ifeq ($(DHT), 1)
 CFLAGS += -DDHT_SENSOR
 endif
-ifdef RAIN
+ifeq ($(RAIN), 1)
 CFLAGS += -DRAIN_SENSOR
 endif
 
@@ -67,24 +67,16 @@ CFLAGS += -DINITIAL_LOCATION_NAME=\"Balkon\"
 # Define MUD-URL
 CFLAGS += -DDHCPV6_CLIENT_MUD_URL=\"https://git.sr.ht/~s0/MUD-Files/blob/master/temperature-node.json\"
 
-# TODO: Rework modular system
-ifdef DHT
-ifdef RAIN
-BOTH=1;
+WOT_META_DATA := wot-config/meta-data.json
+WOT_BINDINGS_PATH := wot-config/bindings.json
+WOT_PLACEHOLDERS_PATH := wot-config/placeholders.json
+WOT_THING_MODELS += wot-config/location.tm.json
+
+ifeq ($(DHT), 1)
+WOT_THING_MODELS += wot-config/dht_thing-model.tm.json
 endif
-endif
-ifdef BOTH
-WOT_THING_MODEL += wot-config/thing-model.tm.json
-WOT_INSTANCE_INFO += wot-config/instance.td.json
-else
-ifdef DHT
-WOT_THING_MODEL += wot-config/dht_thing-model.tm.json
-WOT_INSTANCE_INFO += wot-config/dht_instance.td.json
-endif
-ifdef RAIN
-WOT_THING_MODEL += wot-config/rain_thing-model.tm.json
-WOT_INSTANCE_INFO += wot-config/rain_instance.td.json
-endif
+ifeq ($(RAIN), 1)
+WOT_THING_MODELS += wot-config/rain_thing-model.tm.json
 endif
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
 CFLAGS += -DRAIN_GPIO=$(RAIN_GPIO)

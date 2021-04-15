@@ -1,15 +1,4 @@
 {
-    "@context": [
-        "https://www.w3.org/2019/wot/td/v1", { "@language": "en" }
-    ],
-    "titles": {
-        "de": "LED-Steuerung",
-        "en": "LED-Controller"
-    },
-    "descriptions": {
-        "de": "Steuerungseinheit für eine LED",
-        "en": "Control unit for an LED"
-    },
     "properties": {
         "status": {
             "forms": [

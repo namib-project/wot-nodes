@@ -1,0 +1,13 @@
+{
+    "@context": ["https://www.w3.org/2019/wot/td/v1", { "@language": "de" }],
+    "title": "LED-Steuerung",
+    "titles": {
+        "de": "LED-Steuerung",
+        "en": "LED-Controller"
+    },
+    "description": "Steuerungseinheit für eine LED",
+    "descriptions": {
+        "de": "Steuerungseinheit für eine LED",
+        "en": "Control unit for an LED"
+    }
+}
