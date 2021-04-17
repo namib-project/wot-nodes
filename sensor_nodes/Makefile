@@ -42,9 +42,6 @@ USEMODULE += ps
 # Timer module
 USEMODULE += xtimer
 
-# Sensor drivers
-USEMODULE += dht
-
 # Web of Things
 USEMODULE += wot_core
 USEMODULE += wot_coap
@@ -73,6 +70,7 @@ WOT_THING_MODELS += wot-config/location.tm.json
 
 # Sensor specific Thing Models and configurations
 ifeq ($(DHT), 1)
+USEMODULE += dht
 WOT_THING_MODELS += wot-config/dht-sensor.tm.json
 CFLAGS += -DDHT_SENSOR
 CFLAGS += -DDHT_GPIO=$(DHT_GPIO)
