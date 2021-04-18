@@ -1,3 +1,5 @@
+#ifdef DHT_SENSOR
+
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
@@ -295,3 +297,5 @@ void sensor_humidity_reset_extreme(void){
     hum_max=-1;
     hum_min=-1;
 }
+
+#endif

@@ -1,23 +1,3 @@
-/*
- * Copyright (c) 2015-2016 Ken Bannister. All rights reserved.
- *
- * This file is subject to the terms and conditions of the GNU Lesser
- * General Public License v2.1. See the file LICENSE in the top level
- * directory for more details.
- */
-
-/**
- * @ingroup     examples
- * @{
- *
- * @file
- * @brief       gcoap example
- *
- * @author      Ken Bannister <kb2ma@runbox.com>
- *
- * @}
- */
-
 #include <stdio.h>
 #include "msg.h"
 
@@ -69,9 +49,21 @@ extern int rain_cmd(int argc, char **argv);
 extern void rain_init(void);
 #endif
 
+#ifdef UV_SENSOR
+#include "uv_sensor.h"
+#endif
+#ifdef UV_SENSOR
+extern int uv_cmd(int argc, char **argv);
+extern void uv_init(void);
+#endif
+
+
 static const shell_command_t shell_commands[] = {
 #ifdef DHT_SENSOR
     {"dht", "Reads temperature and humidity (default GPIO: 27).", dht_cmd},
+#endif
+#ifdef UV_SENSOR
+    {"uv", "Reads UV sensor data (default GPIO: 33).", uv_cmd},
 #endif
     {NULL, NULL, NULL}};
 
@@ -91,6 +83,10 @@ int main(void)
 
 #ifdef RAIN_SENSOR
     rain_init();
+#endif
+
+#ifdef UV_SENSOR
+    uv_init();
 #endif
 
     wot_td_coap_server_init();

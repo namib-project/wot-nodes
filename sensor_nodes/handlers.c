@@ -14,6 +14,10 @@
 #include "rain_sensor.h"
 #endif
 
+#ifdef UV_SENSOR
+#include "uv_sensor.h"
+#endif
+
 #ifndef INITIAL_LOCATION_NAME
 #define INITIAL_LOCATION_NAME       "Wohnzimmer"
 #endif
@@ -51,6 +55,40 @@ ssize_t _location_handler(coap_pkt_t* pdu, uint8_t *buf, size_t len, void *ctx)
 
     return 0;
 }
+
+#ifdef UV_SENSOR
+
+float handler_uv_intensity;
+
+ssize_t _uv_value_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
+{
+    (void)ctx;
+    
+    if (get_uv_value(&handler_uv_intensity) != 0) {
+        return gcoap_response(pdu, buf, len, COAP_CODE_INTERNAL_SERVER_ERROR);
+    }
+    char bufstr[10];
+    sprintf(bufstr, "%.2f", handler_uv_intensity);
+
+    gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);
+    coap_opt_add_format(pdu, COAP_FORMAT_JSON);
+    size_t resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
+
+    /* write the UV value in the response buffer */
+    if (pdu->payload_len >= strlen(bufstr))
+    {
+        memcpy(pdu->payload, bufstr, strlen(bufstr));
+        return resp_len + strlen(bufstr);
+    }
+    else
+    {
+        puts("gcoap_cli: msg buffer too small");
+        return gcoap_response(pdu, buf, len, COAP_CODE_INTERNAL_SERVER_ERROR);
+    }
+
+    return 0;
+}
+#endif
 
 #ifdef DHT_SENSOR
 
