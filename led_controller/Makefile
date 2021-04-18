@@ -63,7 +63,8 @@ USEMODULE += netstats_rpl
 
 USEMODULE += gnrc_dhcpv6_client
 USEMODULE += auto_init_dhcpv6_client
-# USEMODULE += gnrc_dhcpv6_client_mud_url  # TODO: Add MUD URL
+USEMODULE += gnrc_dhcpv6_client_mud_url
+CFLAGS += -DDHCPV6_CLIENT_MUD_URL=\"https://gitlab.freedesktop.org/sw0rd/MUD-Files/-/raw/master/sensor_nodes_mud_sensor-node.mud.json\"
 
 # Comment this out to disable code in RIOT that does safety checking
 # which is not needed in a production environment but helps in the
