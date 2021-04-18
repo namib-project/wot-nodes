@@ -55,9 +55,6 @@ WIFI_PASS?=\"NamibTest\"
 CFLAGS += -DESP_WIFI_SSID=$(WIFI_SSID)
 CFLAGS += -DESP_WIFI_PASS=$(WIFI_PASS)
 
-# Define initial location name
-CFLAGS += -DINITIAL_LOCATION_NAME=\"Balkon\"
-
 # MUD DHCPv6 configuration
 USEMODULE += gnrc_dhcpv6_client_mud_url
 CFLAGS += -DDHCPV6_CLIENT_MUD_URL=\"https://git.sr.ht/~s0/MUD-Files/blob/master/temperature-node.json\"
@@ -66,7 +63,12 @@ CFLAGS += -DDHCPV6_CLIENT_MUD_URL=\"https://git.sr.ht/~s0/MUD-Files/blob/master/
 WOT_META_DATA := wot-config/meta-data.json
 WOT_BINDINGS_PATH := wot-config/bindings.json
 WOT_PLACEHOLDERS_PATH := wot-config/placeholders.json
+
+# Thing Model for the sensor node's location
 WOT_THING_MODELS += wot-config/location.tm.json
+
+# Initial location name
+CFLAGS += -DINITIAL_LOCATION_NAME=\"Balkon\"
 
 # Sensor specific Thing Models and configurations
 ifeq ($(DHT), 1)
