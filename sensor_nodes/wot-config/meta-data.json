@@ -1,7 +1,16 @@
 {
-    "@context": ["https://www.w3.org/2019/wot/td/v1", { "@language": "de" }, 
-        { "namib": "https://namib.uni-bremen.de/wot#" }],
-    "@type": ["namib:SensorNode"],
+    "@context": [
+        "https://www.w3.org/2019/wot/td/v1",
+        {
+            "@language": "de"
+        },
+        {
+            "saref": "https://w3id.org/saref#"
+        }
+    ],
+    "@type": [
+        "saref:Sensor"
+    ],
     "title": "NAMIB-Sensor-Node",
     "titles": {
         "de": "NAMIB-Sensor-Node",
