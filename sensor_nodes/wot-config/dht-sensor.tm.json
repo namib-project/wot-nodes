@@ -1,6 +1,7 @@
 {
   "properties": {
     "temperature": {
+      "@type": "saref:Temperature",
       "title": "temperature",
       "description": "The current temperature setting or measurement.",
       "type": "number",
@@ -40,6 +41,7 @@
       "description": "When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision"
     },
     "humidity_value": {
+      "@type": "saref:Humidity",
       "title": "Sensor_Value",
       "description": "Last or Current Measured Value from the Sensor.",
       "readOnly": true,
@@ -102,7 +104,8 @@
   "created": "2021-03-11T17:00:12.146Z",
   "modified": "2021-03-11T17:00:12.146Z",
   "@context": [
-    "http://www.w3.org/ns/td"
+    "http://www.w3.org/ns/td",
+    {"saref": "https://w3id.org/saref#"}
   ],
   "@type": "ThingModel",
   "title": "NAMIB-DHT-Sensor-Node"
