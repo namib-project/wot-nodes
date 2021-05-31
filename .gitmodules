@@ -1,4 +1,4 @@
 [submodule "RIOT"]
 	path = RIOT
-	url = ../riot
+	url = ../RIOT
 	branch = mud-and-wot
