@@ -23,10 +23,10 @@ bool validUnit(unsigned int i){
     return i<3;
 }
 
-int hum_max = -1;
-int hum_min = -1;
-int h100;
-int temp_i;
+int16_t hum_max = -1;
+int16_t hum_min = -1;
+int16_t h100;
+int16_t t100;
 
 int dht_cmd(int argc, char **argv) {
     if ( argc != 2 ) {
@@ -40,9 +40,9 @@ int dht_cmd(int argc, char **argv) {
         return 0;
     }
     if ( strcmp( argv[1] , "temperature" ) == 0 ) {
-        if (sensor_get_temperature(&temp_i) == DHT_OK) {
-            convertTo(&temp_i);
-            printf("Temperature: %d.%01d %s\n", temp_i / 10, temp_i % 10, sensor_get_humidity_unit());
+        if (sensor_get_temperature(&t100) == DHT_OK) {
+            convertTo(&t100);
+            printf("Temperature: %d.%01d %s\n", t100 / 10, t100 % 10, sensor_get_humidity_unit());
         }
         return 0;
     }
@@ -70,16 +70,16 @@ int sensor_dht_measure(int16_t *temp, int16_t *hum) {
 }
 /**
  * Converts the given temperature value in to the current unit.
- * @param temp_i the temperature value in °C * 10^-2
+ * @param temp the temperature value in °C * 10^-2
  */
-void convertTo(int *temp_i){
+void convertTo(int16_t *temp){
     switch (unit)
     {
         case F:
-            *temp_i = *temp_i * (9/5) + 3200;
+            *temp = *temp * (9/5) + 3200;
             break;
         case K:
-            *temp_i += 27315;
+            *temp += 27315;
             break;
         case C:
             break;
@@ -89,8 +89,8 @@ void convertTo(int *temp_i){
 /**
  * @return the temperature in u * 10^-1 where u is represents the chosen unit.
  */
-int sensor_get_temperature(int* temp_i) {
-	int err = sensor_dht_measure((int16_t *) temp_i, NULL);
+int sensor_get_temperature(int16_t* temp) {
+	int err = sensor_dht_measure( temp, NULL);
 	if (err) {
         puts("Error reading DHT values");
     }
@@ -115,7 +115,7 @@ void sensor_set_temperature_unit(Unit u){
 
 int* sensor_get_temperature_range(void){
     static int range[2];
-    int min, max;
+    int16_t min, max;
     switch(dev_dht.params.type){
         case DHT11:
             min=0;
@@ -162,8 +162,8 @@ int sensor_get_temperature_precision(void){
 /**
  * @return humidity in %*10^-1
  */
-int sensor_get_humidity(int* hum_i) {
-	int err = sensor_dht_measure(NULL, (int16_t *) hum_i);
+int sensor_get_humidity(int16_t* hum_i) {
+	int err = sensor_dht_measure(NULL, hum_i);
 	if (err != DHT_OK) {
         puts("Error reading DHT values");
     }
@@ -254,7 +254,7 @@ int sensor_get_humidity_precision(void){
 /**
  * @return Reads the current humidity and eventually updates the hum_max or hum_min value.
  */
-int sensor_set_extreme(int *hum){
+int sensor_set_extreme(int16_t *hum){
 
     if(!sensor_get_humidity(hum)) {
         return -1;

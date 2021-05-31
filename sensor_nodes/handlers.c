@@ -92,8 +92,8 @@ ssize_t _uv_value_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
 
 #ifdef DHT_SENSOR
 
-int handler_t100;
-int handler_h100;
+int16_t handler_t100;
+int16_t handler_h100;
 
 ssize_t _dht_hum_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
 {
