@@ -42,22 +42,6 @@ char *get_led_status(void)
 }
 #endif
 
-ssize_t _echo_handler(coap_pkt_t *pkt, uint8_t *buf, size_t len, void *context)
-{
-    (void)context;
-    char uri[CONFIG_NANOCOAP_URI_MAX];
-
-    if (coap_get_uri_path(pkt, (uint8_t *)uri) <= 0)
-    {
-        return coap_reply_simple(pkt, COAP_CODE_INTERNAL_SERVER_ERROR, buf,
-                                 len, COAP_FORMAT_JSON, NULL, 0);
-    }
-    char *sub_uri = uri + strlen("/echo/");
-    size_t sub_uri_len = strlen(sub_uri);
-    return coap_reply_simple(pkt, COAP_CODE_CONTENT, buf, len, COAP_FORMAT_JSON,
-                             (uint8_t *)sub_uri, sub_uri_len);
-}
-
 ssize_t _led_status_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
 {
     (void)ctx;
