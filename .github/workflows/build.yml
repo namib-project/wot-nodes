@@ -1,0 +1,36 @@
+name: Compile ESP Application
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Install apt dependencies
+        run: |
+          sudo apt-get update
+          sudo chmod +x ./installer_scripts/install_dependencies.sh
+          sudo ./installer_scripts/install_dependencies.sh
+
+      - name: Install ESP toolchain
+        run: |
+          sudo chmod +x ./installer_scripts/install_esp_toolchain.sh
+          ./installer_scripts/install_esp_toolchain.sh
+
+      - name: Compile sensor nodes application
+        run: |
+          cd sensor_nodes
+          ../compile_esp_app.sh
+      - name: Compile led controller application
+        run: |
+          cd led_controller
+          ../compile_esp_app.sh
