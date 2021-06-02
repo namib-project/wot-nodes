@@ -15,6 +15,7 @@ On Ubuntu or other systems that support `apt` the `install_dependencies.sh` scri
 The ESP toolchain from espressif can be installed in the `home` directory by using the `install_esp_toolchain.sh` script provided in the same directory.
 This second script should not be executed as root.
 However, both scripts need to be declared executable by using `sudo chmod +x`.
+Finally, as the actual basis on which the applications will run the RIOT OS submodule has to be retrieved by using `git submodule update --init --recursive`.
 
 After installing the needed dependencies, the applications can be compiled by navigating into their respective directory in a terminal and executing `../compile_esp_app.sh`.
 For compiling and flashing the appplication onto an ESP32 you can run the script with the argument `flash`, i. e. `../compile_esp_app.sh "flash"`.
