@@ -1,3 +1,5 @@
+[![Build Status](https://github.com/namib-project/wot-nodes/actions/workflows/build.yml/badge.svg)](https://github.com/namib-project/wot-nodes/actions/workflows/build.yml)
+
 # NAMIB MUD and WoT Nodes
 
 This repository contains RIOT applications which both support the Manufacturer Usage Description (MUD, RFC 8520) and the Web of Things Thing Description (WoT TD).
