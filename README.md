@@ -22,3 +22,10 @@ Finally, as the actual basis on which the applications will run the RIOT OS subm
 After installing the needed dependencies, the applications can be compiled by navigating into their respective directory in a terminal and executing `../compile_esp_app.sh`.
 For compiling and flashing the appplication onto an ESP32 you can run the script with the argument `flash`, i. e. `../compile_esp_app.sh "flash"`.
 An arbitrary number of options like the USB port that should be used for flashing can be specified in the second argument, e. g. `../compile_esp_app.sh "flash" "PORT=/dev/ttyUSB1"`.
+
+## License
+
+This work is dual-licensed under LGPL 2.1 and MIT.
+You can choose between one of them if you use this work.
+
+`SPDX-License-Identifier: LGPL-2.1 OR MIT`
