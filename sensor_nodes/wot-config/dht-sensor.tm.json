@@ -1,4 +1,10 @@
 {
+  "@context": [
+    "http://www.w3.org/ns/td",
+    {"saref": "https://w3id.org/saref#"}
+  ],
+  "@type": "ThingModel",
+  "title": "NAMIB-DHT-Sensor-Node",
   "properties": {
     "temperature": {
       "@type": "saref:Temperature",
@@ -100,13 +106,5 @@
       "input": {}
     }
   },
-  "events": {},
-  "created": "2021-03-11T17:00:12.146Z",
-  "modified": "2021-03-11T17:00:12.146Z",
-  "@context": [
-    "http://www.w3.org/ns/td",
-    {"saref": "https://w3id.org/saref#"}
-  ],
-  "@type": "ThingModel",
-  "title": "NAMIB-DHT-Sensor-Node"
+  "events": {}
 }

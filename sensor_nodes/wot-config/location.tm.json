@@ -1,4 +1,9 @@
 {
+  "@context": [
+    "http://www.w3.org/ns/td"
+  ],
+  "@type": "ThingModel",
+  "title": "Location Thing Model",
     "properties": {
       "location": {
         "title": "Sensor node location",
