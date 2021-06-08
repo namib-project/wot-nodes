@@ -1,4 +1,10 @@
 {
+  "@context": [
+    "http://www.w3.org/ns/td",
+    {"saref": "https://w3id.org/saref#"}
+  ],
+  "@type": "ThingModel",
+  "title": "NAMIB-Water-Sensor-Node",
   "properties": {
     "water_value": {
       "@type": "saref:Water",
@@ -41,13 +47,5 @@
     ]
   },
   "actions": {},
-  "events": {},
-  "created": "2021-03-11T16:58:12.146Z",
-  "modified": "2021-03-11T16:58:12.146Z",
-  "@context": [
-    "http://www.w3.org/ns/td",
-    {"saref": "https://w3id.org/saref#"}
-  ],
-  "@type": "ThingModel",
-  "title": "NAMIB-Water-Sensor-Node"
+  "events": {}
 }

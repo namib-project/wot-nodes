@@ -1,4 +1,7 @@
 {
+    "@context": ["http://www.w3.org/ns/td"],
+    "@type": "ThingModel",
+    "title": "NAMIB-UV-Sensor-Node",
     "properties": {
         "uv_value": {
             "title": "Gemessener UV-Wert in mW/cm²",
@@ -12,10 +15,5 @@
         }
     },
     "actions": {},
-    "events": {},
-    "created": "2021-04-08T11:27:00Z",
-    "modified": "2021-04-98T11:27:00Z",
-    "@context": ["http://www.w3.org/ns/td"],
-    "@type": "ThingModel",
-    "title": "NAMIB-UV-Sensor-Node"
+    "events": {}
 }
