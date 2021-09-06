@@ -8,24 +8,22 @@
  *
  */
 
-#include <stdio.h>
-#include "msg.h"
-
 #define GNRC_NETIF_IPV6_GROUPS_NUMOF    (5)
-#include "net/gcoap.h"
-#include "shell.h"
-#include "led.h"
-#include "periph/gpio.h"
 
 #include <stddef.h>
+#include <stdio.h>
 
+#include "led.h"
+#include "msg.h"
+#include "net/gcoap.h"
 #include "net/gnrc/netif.h"
-#include "net/sock.h"
-#include "xtimer.h"
-#include "net/wot/coap.h"
-
 #include "net/gnrc/pktdump.h"
 #include "net/gnrc.h"
+#include "net/sock.h"
+#include "net/wot/coap.h"
+#include "shell.h"
+#include "periph/gpio.h"
+#include "xtimer.h"
 
 #ifdef DHT_SENSOR
 static char _dht_humidity_stack[THREAD_STACKSIZE_DEFAULT];
