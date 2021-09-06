@@ -40,9 +40,12 @@ ipv6_addr_t all_coap_nodes_group_addr = {{ 0xff, 0x02, 0x00, 0x00,
 
 int main(void)
 {
-    gnrc_netif_t *netif = gnrc_netif_iter(NULL);
-    netif->ipv6.aac_mode |= GNRC_NETIF_AAC_DHCP;
-    dhcpv6_client_req_ia_na(netif->pid);
+    /* Configure netifs for DHCPv6 IA_NA */
+    gnrc_netif_t *netif = NULL;
+    while ((netif = gnrc_netif_iter(netif))) {
+        netif->ipv6.aac_mode |= GNRC_NETIF_AAC_DHCP;
+        dhcpv6_client_req_ia_na(netif->pid);
+    }
 
     xtimer_sleep(3);
     /* for the thread running the shell */
