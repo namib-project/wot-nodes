@@ -21,8 +21,8 @@ WOT_THING_MODELS += wot-config/thing_model.json
 ifeq ($(BOARD),esp32-wroom-32)
 # ESP wifi configuration
 USEMODULE += esp_wifi
-WIFI_SSID?=\"Your\ SSID\"
-WIFI_PASS?=\"Your\ Password\"
+WIFI_SSID?=\"Namib\"
+WIFI_PASS?=\"NamibTest\"
 CFLAGS += -DESP_WIFI_SSID=$(WIFI_SSID)
 CFLAGS += -DESP_WIFI_PASS=$(WIFI_PASS)
 
