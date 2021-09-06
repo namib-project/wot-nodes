@@ -15,6 +15,7 @@
 
 #include "led.h"
 #include "msg.h"
+#include "net/dhcpv6/client.h"
 #include "net/gcoap.h"
 #include "net/gnrc/netif.h"
 #include "net/gnrc/pktdump.h"
@@ -113,7 +114,7 @@ int main(void)
     wot_td_coap_server_init();
 
     /* join CoAP IPv6 multicast group */
-    gnrc_netif_t *netif = NULL;
+    netif = NULL;
     while ((netif = gnrc_netif_iter(netif))) {
         gnrc_netif_ipv6_group_join(netif, &all_coap_nodes_group_addr);
     }
