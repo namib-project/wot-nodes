@@ -3,7 +3,7 @@
  * Copyright (C) 2020, 2021  Jens Bücker <jebu@uni-bremen.de>
  * Copyright (C) 2020, 2021  Maurice Springholz <mau_spr@uni-bremen.de>
  * Copyright (C) 2020, 2021  Jan Romann <jan.romann@uni-bremen.de>
- * 
+ *
  * SPDX-License-Identifier: LGPL-2.1 OR MIT
  *
  */
