@@ -13,6 +13,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "xtimer.h"
+
+#include "net/gnrc/netif.h"
+#include "net/dhcpv6/client.h"
 #include "net/wot/coap.h"
 #include "shell.h"
 
@@ -32,6 +35,10 @@ static const shell_command_t shell_commands[] = {
 
 int main(void)
 {
+    gnrc_netif_t *netif = gnrc_netif_iter(NULL);
+    netif->ipv6.aac_mode |= GNRC_NETIF_AAC_DHCP;
+    dhcpv6_client_req_ia_na(netif->pid);
+
     xtimer_sleep(3);
     /* for the thread running the shell */
     msg_init_queue(_main_msg_queue, MAIN_QUEUE_SIZE);
