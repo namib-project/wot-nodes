@@ -68,7 +68,7 @@ WOT_PLACEHOLDERS_PATH := wot-config/placeholders.json
 WOT_THING_MODELS += wot-config/location.tm.json
 
 # Initial location name
-CFLAGS += -DINITIAL_LOCATION_NAME=\"Balkon\"
+CFLAGS += -DINITIAL_LOCATION_NAME=\"Balcony\"
 
 # Sensor specific Thing Models and configurations
 ifeq ($(DHT), 1)

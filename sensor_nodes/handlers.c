@@ -29,7 +29,7 @@
 #endif
 
 #ifndef INITIAL_LOCATION_NAME
-#define INITIAL_LOCATION_NAME       "Wohnzimmer"
+#define INITIAL_LOCATION_NAME       "Living room"
 #endif
 
 #ifndef MAX_LOCATION_NAME_LENGTH
