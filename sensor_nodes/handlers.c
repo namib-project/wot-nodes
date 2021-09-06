@@ -3,7 +3,7 @@
  * Copyright (C) 2020, 2021  Jens Bücker <jebu@uni-bremen.de>
  * Copyright (C) 2020, 2021  Maurice Springholz <mau_spr@uni-bremen.de>
  * Copyright (C) 2020, 2021  Jan Romann <jan.romann@uni-bremen.de>
- * 
+ *
  * SPDX-License-Identifier: LGPL-2.1 OR MIT
  *
  */
@@ -73,7 +73,7 @@ float handler_uv_intensity;
 ssize_t _uv_value_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
 {
     (void)ctx;
-    
+
     if (get_uv_value(&handler_uv_intensity) != 0) {
         return gcoap_response(pdu, buf, len, COAP_CODE_INTERNAL_SERVER_ERROR);
     }
@@ -108,7 +108,7 @@ int16_t handler_h100;
 ssize_t _dht_hum_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
 {
     (void)ctx;
-    
+
     if (sensor_get_humidity(&handler_h100) != 0) {
         return gcoap_response(pdu, buf, len, COAP_CODE_INTERNAL_SERVER_ERROR);
     }
