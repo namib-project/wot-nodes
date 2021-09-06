@@ -33,6 +33,11 @@ static const shell_command_t shell_commands[] = {
 #endif
     {NULL, NULL, NULL}};
 
+ipv6_addr_t all_coap_nodes_group_addr = {{ 0xff, 0x02, 0x00, 0x00,
+                                           0x00, 0x00, 0x00, 0x00,
+                                           0x00, 0x00, 0x00, 0x00,
+                                           0x00, 0x00, 0x00, 0xfd }};
+
 int main(void)
 {
     gnrc_netif_t *netif = gnrc_netif_iter(NULL);
@@ -44,6 +49,12 @@ int main(void)
     msg_init_queue(_main_msg_queue, MAIN_QUEUE_SIZE);
     //Todo: Implement auto init
     wot_td_coap_server_init();
+
+    /* join CoAP IPv6 multicast group */
+    netif = NULL;
+    while ((netif = gnrc_netif_iter(netif))) {
+        gnrc_netif_ipv6_group_join(netif, &all_coap_nodes_group_addr);
+    }
 
 #ifndef IS_NATIVE
     led_cmd_init();
