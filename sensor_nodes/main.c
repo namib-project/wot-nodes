@@ -103,6 +103,13 @@ int main(void)
     uv_init();
 #endif
 
+    /* Configure netifs for DHCPv6 IA_NA */
+    gnrc_netif_t *netif = NULL;
+    while ((netif = gnrc_netif_iter(netif))) {
+        netif->ipv6.aac_mode |= GNRC_NETIF_AAC_DHCP;
+        dhcpv6_client_req_ia_na(netif->pid);
+    }
+
     wot_td_coap_server_init();
 
     /* join CoAP IPv6 multicast group */
