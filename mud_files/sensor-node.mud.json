@@ -1,7 +1,7 @@
 {
   "ietf-mud:mud": {
     "mud-version": 1,
-    "mud-url": "https://namib.me/sensor-node.json",
+    "mud-url": "https://raw.githubusercontent.com/namib-project/wot-nodes/master/mud_files/sensor-node.mud.json",
     "last-update": "2021-03-22T11:39:55+00:00",
     "cache-validity": 48,
     "is-supported": true,
