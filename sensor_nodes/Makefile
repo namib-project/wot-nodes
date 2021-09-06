@@ -12,7 +12,7 @@ RIOTBASE ?= $(CURDIR)/../RIOT
 # Set correcsponding variable to 1 if sensor is available:
 DHT ?= 1
 RAIN ?= 0
-UV ?= 1
+UV ?= 0
 
 # GPIO Bindings
 DHT_GPIO = GPIO27
