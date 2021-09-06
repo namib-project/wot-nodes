@@ -1,4 +1,4 @@
 [submodule "RIOT"]
 	path = RIOT
-	url = ../RIOT
-	branch = mud-and-wot
+	url = https://github.com/namib-project/RIOT
+	branch = wot_tm_extension
