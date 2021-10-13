@@ -58,7 +58,7 @@ CFLAGS += -DESP_WIFI_PASS=$(WIFI_PASS)
 
 # MUD DHCPv6 configuration
 USEMODULE += dhcpv6_client_mud_url
-CFLAGS += -DDHCPV6_CLIENT_MUD_URL=\"https://raw.githubusercontent.com/namib-project/wot-nodes/master/mud_files/sensor-node.mud.json\"
+CFLAGS += -DCONFIG_DHCPV6_CLIENT_MUD_URL=\"https://raw.githubusercontent.com/namib-project/wot-nodes/master/mud_files/sensor-node.mud.json\"
 
 # Common Web of Things definitions
 WOT_META_DATA := wot-config/meta-data.json

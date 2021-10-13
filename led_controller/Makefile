@@ -65,7 +65,7 @@ USEMODULE += gnrc_dhcpv6_client
 USEMODULE += auto_init_dhcpv6_client
 USEMODULE += dhcpv6_client_ia_na
 USEMODULE += dhcpv6_client_mud_url
-CFLAGS += -DDHCPV6_CLIENT_MUD_URL=\"https://raw.githubusercontent.com/namib-project/wot-nodes/master/mud_files/sensor-node.mud.json\"
+CFLAGS += -DCONFIG_DHCPV6_CLIENT_MUD_URL=\"https://raw.githubusercontent.com/namib-project/wot-nodes/master/mud_files/sensor-node.mud.json\"
 
 # Comment this out to disable code in RIOT that does safety checking
 # which is not needed in a production environment but helps in the
