@@ -67,6 +67,26 @@ USEMODULE += dhcpv6_client_ia_na
 USEMODULE += dhcpv6_client_mud_url
 CFLAGS += -DCONFIG_DHCPV6_CLIENT_MUD_URL=\"https://raw.githubusercontent.com/namib-project/wot-nodes/master/mud_files/sensor-node.mud.json\"
 
+# Enables DTLS-secured CoAP messaging
+GCOAP_ENABLE_DTLS ?= 0
+ifeq (1,$(GCOAP_ENABLE_DTLS))
+	# Required by DTLS. Currently, only tinyDTLS is supported by sock_dtls.
+	USEPKG += tinydtls
+	USEMODULE += sock_dtls
+	USEMODULE += tinydtls_sock_dtls
+	USEMODULE += gcoap_dtls
+	# tinydtls needs crypto secure PRNG
+	USEMODULE += prng_sha1prng
+
+	# Maximum number of DTLS sessions
+	CFLAGS += -DDTLS_PEER_MAX=1
+
+	CFLAGS += -DWOT_GCOAP_DTLS_ID=\"Client_identity\"
+	CFLAGS += -DWOT_GCOAP_DTLS_PSK=\"secretPSK\"
+	CFLAGS += -DWOT_GCOAP_DTLS_CREDENTIAL_TAG=8
+	CFLAGS += -DGCOAP_STACK_SIZE=1536
+endif
+
 # Comment this out to disable code in RIOT that does safety checking
 # which is not needed in a production environment but helps in the
 # development process:
