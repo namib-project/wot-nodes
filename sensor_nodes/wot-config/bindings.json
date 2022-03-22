@@ -81,33 +81,6 @@
                 }
             ]
         },
-        "temperature_range": {
-            "forms": [
-                {
-                    "riot_os:handler_function": "_dht_temp_range_handler",
-                    "op": "readproperty",
-                    "href": "/temperature/range"
-                }
-            ]
-        },
-        "temperature_step": {
-            "forms": [
-                {
-                    "riot_os:handler_function": "_dht_temp_step_handler",
-                    "op": "readproperty",
-                    "href": "/temperature/step"
-                }
-            ]
-        },
-        "temperature_precision": {
-            "forms": [
-                {
-                    "riot_os:handler_function": "_dht_temp_precision_handler",
-                    "op": "readproperty",
-                    "href": "/temperature/precision"
-                }
-            ]
-        },
         "humidity_value": {
             "forms": [
                 {
@@ -135,48 +108,12 @@
                 }
             ]
         },
-        "humidity_Min_Range_Value": {
-            "forms": [
-                {
-                    "riot_os:handler_function": "_dht_hum_min_range_handler",
-                    "op": "readproperty",
-                    "href": "/humidity/min_range"
-                }
-            ]
-        },
-        "humidity_Max_Range_Value": {
-            "forms": [
-                {
-                    "riot_os:handler_function": "_dht_hum_max_range_handler",
-                    "op": "readproperty",
-                    "href": "/humidity/max_range"
-                }
-            ]
-        },
         "humidity_Units": {
             "forms": [
                 {
                     "riot_os:handler_function": "_dht_hum_unit_handler",
                     "op": "readproperty",
                     "href": "/humidity/unit"
-                }
-            ]
-        },
-        "humidity_Precision": {
-            "forms": [
-                {
-                    "riot_os:handler_function": "_dht_hum_precision_handler",
-                    "op": "readproperty",
-                    "href": "/humidity/precision"
-                }
-            ]
-        },
-        "humidity_Step": {
-            "forms": [
-                {
-                    "riot_os:handler_function": "_dht_hum_step_handler",
-                    "op": "readproperty",
-                    "href": "/humidity/step"
                 }
             ]
         }

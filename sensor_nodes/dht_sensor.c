@@ -123,52 +123,6 @@ void sensor_set_temperature_unit(Unit u){
     unit = u;
 }
 
-int* sensor_get_temperature_range(void){
-    static int range[2];
-    int16_t min, max;
-    switch(dev_dht.params.type){
-        case DHT11:
-            min=0;
-            max=5000;
-            break;
-        case DHT22: //DHT21=DHT22
-            min=-4000;
-            max=8000;
-            break;
-        default:
-            return 0;
-    }
-    convertTo(&min);
-    convertTo(&max);
-    range[0]=min;
-    range[1]=max;
-    return range;
-}
-/**
- * @return the step value in °C * 10^-1. Returns -1 if the function is not implemented for the given type.
- **/
-int sensor_get_temperature_step(void){
-    switch (dev_dht.params.type) {
-        case DHT11:
-            return 10;
-        default:
-            return -1;
-    }
-}
-
-/**
- *
- * @return the precision as +/- x °C * 10^-1. Returns -1 if teh function is not implemented for the given type.
- */
-int sensor_get_temperature_precision(void){
-    switch (dev_dht.params.type){
-        case DHT11:
-            return 20;
-        default:
-            return -1;
-    }
-}
-
 /**
  * @return humidity in %*10^-1
  */
@@ -193,72 +147,6 @@ char* sensor_get_humidity_unit(void){
 
 bool unitIsPercent(void){
     return strcmp(sensor_get_humidity_unit(), "%") == 0;
-}
-
-/**
- * @return The minimum value that can be measured in %*10^-1 and -1 if the sensor type or the unit is  not supported.
- */
-int sensor_get_humidity_min_range(void) {
-    if(!unitIsPercent())
-        return -1;
-
-    switch (dev_dht.params.type) {
-        case DHT11:
-            return 200;
-        case DHT22: //DHT21=DHT22
-           return 0;
-        default:
-            return -1;
-    }
-}
-/**
- *
- * @return The maximum value that can be measured  in %*10^-1 and -1 if the sensor type or the unit is  not supported.
- */
-int sensor_get_humidity_max_range(void){
-    if(!unitIsPercent())
-        return -1;
-
-    switch(dev_dht.params.type){
-        case DHT11:
-            return 800;
-        case DHT22: //DHT21=DHT22
-            return 1000;
-        default:
-            return -1;
-    }
-}
-
-/**
- *
- * @return The step value in %*10^-1. -1 if the step value is not implemented for the given device type or unit.
- */
-int sensor_get_humidity_step(void) {
-    if (!unitIsPercent())
-        return -1;
-
-    switch (dev_dht.params.type) {
-        case DHT11:
-            return 10;
-        default:
-            return -1;
-    }
-}
-
-/**
- *  The function covers the worst case accuracy.
- * @return Precision as +/- x %*10^-1. -1 if the precision is not implemented for the given device type or unit.
- */
-int sensor_get_humidity_precision(void){
-        if(!unitIsPercent())
-            return -1;
-
-        switch(dev_dht.params.type){
-            case DHT11:
-                return 50;
-            default:
-                return -1;
-        }
 }
 
 /**
