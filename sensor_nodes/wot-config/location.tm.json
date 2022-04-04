@@ -2,7 +2,7 @@
   "@context": [
     "http://www.w3.org/ns/td"
   ],
-  "@type": "ThingModel",
+  "@type": "tm:ThingModel",
   "title": "Location Thing Model",
     "properties": {
       "location": {

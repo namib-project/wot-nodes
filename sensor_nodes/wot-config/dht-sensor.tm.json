@@ -3,7 +3,7 @@
     "http://www.w3.org/ns/td",
     {"saref": "https://w3id.org/saref#"}
   ],
-  "@type": "ThingModel",
+  "@type": "tm:ThingModel",
   "title": "NAMIB-DHT-Sensor-Node",
   "properties": {
     "temperature": {
@@ -22,29 +22,6 @@
         "K"
       ],
       "type": "string"
-    },
-    "temperature_range": {
-      "title": "range",
-      "type": "array",
-      "description": "The valid range for the Property in the Resource as a number. The first value in the array is the minimum value, the second value in the array is the maximum value.",
-      "readOnly": true,
-      "minItems": 2,
-      "maxItems": 2,
-      "items": {
-        "type": "number"
-      }
-    },
-    "temperature_step": {
-      "title": "step",
-      "description": "Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.",
-      "readOnly": true,
-      "type": "number"
-    },
-    "temperature_precision": {
-      "title": "precision",
-      "type": "number",
-      "readOnly": true,
-      "description": "When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision"
     },
     "humidity_value": {
       "@type": "saref:Humidity",
@@ -65,40 +42,12 @@
       "readOnly": true,
       "type": "number"
     },
-    "humidity_Min_Range_Value": {
-      "title": "Min_Range_Value",
-      "description": "The minimum value that can be measured by the sensor.",
-      "readOnly": true,
-      "type": "number"
-    },
-    "humidity_Max_Range_Value": {
-      "title": "Max_Range_Value",
-      "description": "The maximum value that can be measured by the sensor.",
-      "readOnly": true,
-      "type": "number"
-    },
     "humidity_Units": {
       "title": "Sensor_Units",
       "description": "Measurement Units Definition.",
       "readOnly": true,
       "type": "string"
-    },
-    "humidity_Precision": {
-      "title": "Sensor_Precision",
-      "type": "number",
-      "readOnly": true,
-      "description": "Proviedes a +/- tolerance against Properties in the Resource."
-    },
-    "humidity_Step": {
-      "title": "Sensor_Step",
-      "type": "number",
-      "readOnly": true,
-      "description": "Step value across the defined range. The step Property defines the increment for valid values across the range."
-    },
-    "required": [
-      "temperature",
-      "humidity_value"
-    ]
+    }
   },
   "actions": {
     "humidity_Reset_Min_and_Max_Measured_Values": {
@@ -106,5 +55,9 @@
       "input": {}
     }
   },
-  "events": {}
+  "events": {},
+  "tm:required": [
+    "#/properties/temperature",
+    "#/properties/humidity_value"
+  ]
 }
