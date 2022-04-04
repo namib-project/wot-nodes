@@ -6,7 +6,7 @@
         }
     ],
     "@type": [
-        "ThingModel",
+        "tm:ThingModel",
         "saref:LightSwitch"
     ],
     "title": "Lamp Thing Model",

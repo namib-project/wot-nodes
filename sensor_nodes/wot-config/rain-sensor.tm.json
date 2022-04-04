@@ -3,7 +3,7 @@
     "http://www.w3.org/ns/td",
     {"saref": "https://w3id.org/saref#"}
   ],
-  "@type": "ThingModel",
+  "@type": "tm:ThingModel",
   "title": "NAMIB-Water-Sensor-Node",
   "properties": {
     "water_value": {
