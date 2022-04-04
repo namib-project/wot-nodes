@@ -41,11 +41,11 @@
       "description": "Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.",
       "readOnly": true,
       "type": "number"
-    },
-    "required": [
-      "water_value"
-    ]
+    }
   },
   "actions": {},
-  "events": {}
+  "events": {},
+  "required": [
+    "#/properties/water_value"
+  ]
 }
