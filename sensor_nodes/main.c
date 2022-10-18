@@ -21,10 +21,13 @@
 #include "net/gnrc/pktdump.h"
 #include "net/gnrc.h"
 #include "net/sock.h"
-#include "net/wot/coap.h"
 #include "shell.h"
 #include "periph/gpio.h"
 #include "xtimer.h"
+
+#if IS_USED(MODULE_WOT_COAP)
+#include "net/wot/coap.h"
+#endif
 
 #ifdef DHT_SENSOR
 static char _dht_humidity_stack[THREAD_STACKSIZE_DEFAULT];
@@ -111,7 +114,9 @@ int main(void)
         dhcpv6_client_req_ia_na(netif->pid);
     }
 
+#if IS_USED(MODULE_WOT_COAP)
     wot_td_coap_server_init();
+#endif
 
     /* join CoAP IPv6 multicast group */
     netif = NULL;

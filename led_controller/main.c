@@ -15,9 +15,12 @@
 
 #include "net/gnrc/netif.h"
 #include "net/dhcpv6/client.h"
-#include "net/wot/coap.h"
 #include "shell.h"
 #include "xtimer.h"
+
+#if IS_USED(MODULE_WOT_COAP)
+#include "net/wot/coap.h"
+#endif
 
 #ifndef IS_NATIVE
 extern int led_cmd(int argc, char **argv);
@@ -51,7 +54,9 @@ int main(void)
     /* for the thread running the shell */
     msg_init_queue(_main_msg_queue, MAIN_QUEUE_SIZE);
     //Todo: Implement auto init
+#if IS_USED(MODULE_WOT_COAP)
     wot_td_coap_server_init();
+#endif
 
     /* join CoAP IPv6 multicast group */
     netif = NULL;
